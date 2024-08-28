@@ -56,6 +56,16 @@ class World {
     }
     
     addToMap(moveObject) {
+        if (moveObject.otherDirection) {
+            this.ctx.save();
+            this.ctx.translate(moveObject.width, 0);
+            this.ctx.scale(-1, 1);
+            moveObject.x = moveObject.x * -1;
+        }
         this.ctx.drawImage(moveObject.img, moveObject.x, moveObject.y, moveObject.width, moveObject.height);
+        if (moveObject.otherDirection) {
+            moveObject.x = moveObject.x * -1;
+            this.ctx.restore();
+        }
     }
 }
