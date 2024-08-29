@@ -66,22 +66,16 @@ class movableObject {
         this.img = this.imageCache[path];
         this.currentImage++;
     }
-    
-    movingRight() {
-        console.log('movingRight');
-    }
 
     moveLeft() {
             this.x -= this.speed;
-            this.otherDirection = true;
-    }
-
-    jump() {
-        this.speedY = 30;
     }
 
     moveRight() {
         this.x += this.speed;
-        this.otherDirection = false;
+    }
+
+    jump() {
+        this.speedY = 30;
     }
 }
