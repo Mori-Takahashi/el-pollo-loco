@@ -7,7 +7,14 @@ class movableObject extends  DrawableObjects{
      * @type {number} - speed
      */
     acceleration = 2.5;
+
+
+    /**
+     * Life / Energy of character
+     * @type {number} - 100(%) is default value.
+     */
     energy = 100;
+
     lastHit = 0;
 
     /**
