@@ -36,21 +36,6 @@ class movableObject extends  DrawableObjects{
         return this.y < 155
     }
 
-
-    /**
-     * creates the "hit box"
-     * @param ctx - context
-     */
-    drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Chicken) {
-        ctx.beginPath();
-        ctx.lineWidth = '5';
-        ctx.strokeStyle = 'red';
-        ctx.rect(this.x, this.y, this.width, this.height);
-        ctx.stroke();
-        }
-    }
-
     /**
      * Checks whether 2 objects combine
      * @param moveObject - objects

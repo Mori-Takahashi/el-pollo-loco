@@ -21,6 +21,21 @@ class DrawableObjects {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
+
+    /**
+     * creates the "hit box"
+     * @param ctx - context
+     */
+    drawFrame(ctx) {
+        if (this instanceof Character || this instanceof Chicken) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+    }
+
     /**
      *
      * @param {Array} arr - Array where img will be loaded ['img/img1.png', img/img2.png, ...]
