@@ -52,11 +52,13 @@ class movableObject {
      * @param ctx - context
      */
     drawFrame(ctx) {
+        if (this instanceof Character || this instanceof Chicken) {
         ctx.beginPath();
         ctx.lineWidth = '5';
         ctx.strokeStyle = 'red';
         ctx.rect(this.x, this.y, this.width, this.height);
         ctx.stroke();
+        }
     }
 
     /**
