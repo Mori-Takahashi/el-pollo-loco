@@ -33,7 +33,11 @@ class movableObject extends  DrawableObjects{
      * @returns {boolean} - none
      */
     isAboveGround() {
-        return this.y < 155
+        if (this instanceof ThrowableObject) {
+            return true;
+        } else {
+            return this.y < 155
+        }
     }
 
     /**
