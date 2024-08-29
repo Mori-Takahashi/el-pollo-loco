@@ -8,7 +8,36 @@ class movableObject {
     currentImage = 0;
     speed = 0.15;
     otherDirection = false;
+    speedY = 0;
+    /**
+     * Falling down Speed
+     * @type {number} - speed
+     */
+    acceleration = 2.5;
 
+    /**
+     * Gravity (Jump)
+     */
+    applyGravity() {
+        setInterval(() => {
+            if (this.isAboveGround())
+            this.y -= this.speedY;
+            this.speedY -= this.acceleration;
+        }, 1000 / 25);
+    }
+
+    /**
+     * Checks whether the character is on the floor
+     * @returns {boolean} - none
+     */
+    isAboveGround() {
+        return this.y < 155
+    }
+
+    /**
+     * Load images
+     * @param path - path of the image
+     */
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
@@ -26,6 +55,10 @@ class movableObject {
         });
     }
 
+    /**
+     * Animate images loop
+     * @param {array} images - Path of the array images (this.IMAGES_WALKING)
+     */
     playAnimation(images) {
         let i = this.currentImage % this.IMAGES_WALKING.length;
         // i = 0, 1, 2, 3, 4, 5, 0
