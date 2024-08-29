@@ -1,11 +1,4 @@
-class movableObject {
-    x = 120;
-    y = 280;
-    img;
-    height= 150;
-    width= 100;
-    imageCache = {};
-    currentImage = 0;
+class movableObject extends  DrawableObjects{
     speed = 0.15;
     otherDirection = false;
     speedY = 0;
@@ -36,18 +29,6 @@ class movableObject {
         return this.y < 155
     }
 
-    /**
-     * Load images
-     * @param path - path of the image
-     */
-    loadImage(path) {
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
 
     /**
      * creates the "hit box"
@@ -101,17 +82,6 @@ class movableObject {
         return this.energy === 0;
     }
 
-    /**
-     *
-     * @param {Array} arr - Array where img will be loaded ['img/img1.png', img/img2.png, ...]
-     */
-    loadImages(arr){
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
-        });
-    }
 
     /**
      * Animate images loop
