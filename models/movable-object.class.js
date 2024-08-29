@@ -62,6 +62,18 @@ class movableObject {
     }
 
     /**
+     * Checks whether 2 objects combine
+     * @param moveObject - objects
+     * @returns {boolean} - e.g. character.isColliding(chicken);
+     */
+    isColliding(moveObject) {
+        return this.x + this.width > moveObject.x &&
+            this.y + this.height > moveObject.y &&
+            this.x < moveObject.x &&
+            this.y < moveObject.y + moveObject.height;
+    }
+
+    /**
      *
      * @param {Array} arr - Array where img will be loaded ['img/img1.png', img/img2.png, ...]
      */
