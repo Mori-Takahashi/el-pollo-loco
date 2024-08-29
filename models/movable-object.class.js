@@ -14,6 +14,7 @@ class movableObject {
      * @type {number} - speed
      */
     acceleration = 2.5;
+    energy = 100;
 
     /**
      * Gravity (Jump)
@@ -71,6 +72,24 @@ class movableObject {
             this.y + this.height > moveObject.y &&
             this.x < moveObject.x &&
             this.y < moveObject.y + moveObject.height;
+    }
+
+    /**
+     * remove energy
+     */
+    hit() {
+        this.energy -= 5;
+        if (this.energy <= 0) {
+            this.energy = 0;
+        }
+    }
+
+    /**
+     * Is character energy === 0
+     * @returns {boolean} - true or false
+     */
+    isDead() {
+        return this.energy === 0;
     }
 
     /**
