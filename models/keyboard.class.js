@@ -1,3 +1,7 @@
+/**
+ * Keyboard pressing action
+ *     LEFT, RIGHT, UP, DOWN, SPACE
+ */
 class Keyboard {
     LEFT = false;
     RIGHT = false;
