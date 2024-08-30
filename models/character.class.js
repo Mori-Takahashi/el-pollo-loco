@@ -1,7 +1,7 @@
 class Character extends movableObject{
 
     height = 280;
-    y = 55;
+    y = 155;
     speed = 10;
 
     IMAGES_WALKING = [
@@ -85,15 +85,18 @@ class Character extends movableObject{
                 this.playAnimation(this.IMAGES_DEAD);
             } else if (this.isHurt()){
                 this.playAnimation(this.IMAGES_HURT);
-            }
-            else if (this.isAboveGround()) {
-                this.playAnimation(this.IMAGES_JUMPING);
             } else {
-                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && !this.isAboveGround()) {
                     //work animation
                     this.playAnimation(this.IMAGES_WALKING);
                 }
             }
         }, 50);
+
+        setInterval(() => {
+            if (this.isAboveGround()) {
+                this.playAnimation(this.IMAGES_JUMPING);
+            }
+        }, 80);
     }
 }
