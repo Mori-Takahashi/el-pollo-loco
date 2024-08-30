@@ -70,6 +70,8 @@ class movableObject extends  DrawableObjects{
         return timepassed < 1;
     }
 
+
+
     /**
      * Is character energy === 0
      * @returns {boolean} - true or false
