@@ -46,6 +46,7 @@ class World {
         }
     }
 
+    /*TODO connecting with other statusbar*/
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)){
@@ -53,6 +54,7 @@ class World {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
             }
+
         });
     }
     
@@ -73,6 +75,8 @@ class World {
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.salsa);
         this.addObjectsToMap(this.throwableObjects);
 
 
