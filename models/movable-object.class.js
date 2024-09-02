@@ -70,8 +70,6 @@ class movableObject extends  DrawableObjects{
         this.CoinsInInventory += 1;
         if (this.CoinsInInventory <= 0) {
             this.CoinsInInventory = 0;
-        } else {
-            this.lastHit = new Date().getTime();
         }
     }
 
@@ -79,8 +77,6 @@ class movableObject extends  DrawableObjects{
         this.bottleInInventory += 1;
         if (this.bottleInInventory <= 0) {
             this.bottleInInventory = 0;
-        } else {
-            this.lastHit = new Date().getTime();
         }
     }
 
