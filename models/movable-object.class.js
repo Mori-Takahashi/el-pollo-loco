@@ -67,7 +67,7 @@ class movableObject extends  DrawableObjects{
     }
 
     colectingCoin() {
-        this.CoinsInInventory += 1;
+        this.CoinsInInventory += 10;
         if (this.CoinsInInventory <= 0) {
             this.CoinsInInventory = 0;
         }

@@ -10,7 +10,7 @@ class Salsa extends movableObject {
         super().loadImage('img/8_coin/coin_1.png');
         this.loadImages(this.IMAGES);
 
-        this.x = 500 + Math.random() * 500;
+        this.x = 500 + Math.random() * 1800;
         this.animate();
     }
 

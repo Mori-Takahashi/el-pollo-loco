@@ -58,7 +58,7 @@ class World {
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)){
                 console.log('Collision with', coin);
-                this.CoinsInInventory++;
+                this.CoinsInInventory += 10;
                 this.character.colectingCoin();
                 this.coinBar.setPercentage(this.character.CoinsInInventory);
                 this.character.checkIsCollecting();
@@ -80,7 +80,6 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.backgroundObjects);
-/*        this.addObjectsToMap(this.collectibleObjects);*/
 
         this.ctx.translate(-this.camera_x, 0);
         // --- Space for fixed objects --- //
