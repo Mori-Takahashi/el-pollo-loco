@@ -14,6 +14,8 @@ class movableObject extends  DrawableObjects{
      * @type {number} - 100(%) is default value.
      */
     energy = 100;
+    CoinsInInventory = 0;
+    bottleInInventory = 0;
 
     lastHit = 0;
 
@@ -64,12 +66,29 @@ class movableObject extends  DrawableObjects{
         }
     }
 
+    colectingCoin() {
+        this.CoinsInInventory += 1;
+        if (this.CoinsInInventory <= 0) {
+            this.CoinsInInventory = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+    colectingSalsa() {
+        this.bottleInInventory += 1;
+        if (this.bottleInInventory <= 0) {
+            this.bottleInInventory = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
     isHurt() {
         let timepassed = new Date().getTime() - this.lastHit; // Difference in ms
         timepassed = timepassed / 1000; // Difference in s
         return timepassed < 1;
     }
-
 
 
     /**

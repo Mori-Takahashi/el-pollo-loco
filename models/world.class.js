@@ -46,7 +46,6 @@ class World {
         }
     }
 
-    /*TODO connecting with other statusbar*/
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)){
@@ -54,7 +53,26 @@ class World {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
             }
+        });
 
+        this.level.coins.forEach((coin) => {
+            if (this.character.isColliding(coin)){
+                console.log('Collision with', coin);
+                this.CoinsInInventory++;
+                this.character.colectingCoin();
+                this.coinBar.setPercentage(this.character.CoinsInInventory);
+                this.character.checkIsCollecting();
+            }
+        });
+
+        this.level.salsa.forEach((salsa) => {
+            if (this.character.isColliding(salsa)){
+                console.log('Collision with', salsa);
+                this.bottleInInventory++;
+                this.character.colectingSalsa();
+                this.salsaBar.setPercentage(this.character.bottleInInventory);
+                this.character.checkIsCollecting();
+            }
         });
     }
     
@@ -123,11 +141,25 @@ class World {
         moveObject.x = moveObject.x * -1;
         this.ctx.restore();
     }
-}
 
-/*    isColliding (obj) {
-    return  (this.X + this.width) >= obj.X && this.X <= (obj.X + obj.width) &&
-        (this.Y + this.offsetY + this.height) >= obj.Y &&
-        (this.Y + this.offsetY) <= (obj.Y + obj.height) &&
-        obj.onCollisionCourse;
-}*/
+    removeObjectFromCanvas(object) {
+        if (!object) {
+            console.error('removeObjectFromCanvas: object is undefined');
+            return;
+        }
+
+        const coinIndex = this.level.coins.indexOf(object);
+        if (coinIndex > -1) {
+            this.level.coins.splice(coinIndex, 1);
+            return;
+        }
+
+        const salsaIndex = this.level.salsa.indexOf(object);
+        if (salsaIndex > -1) {
+            this.level.salsa.splice(salsaIndex, 1);
+            return;
+        }
+
+        console.error('removeObjectFromCanvas: object not found in coins or salsa arrays');
+    }
+}

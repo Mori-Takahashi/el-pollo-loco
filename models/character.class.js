@@ -4,6 +4,7 @@ class Character extends movableObject{
     y = 155;
     speed = 10;
     lastKeyPressTime = Date.now();
+    collecting = false;
 
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
@@ -89,6 +90,27 @@ class Character extends movableObject{
         this.lastKeyPressTime = new Date().getTime();
     }
 
+    isCollecting() {
+        const coin = this.world.level.coins.find(coin => this.isColliding(coin));
+        if (coin) {
+            this.collecting = true;
+            return coin;
+        }
+        const salsa = this.world.level.salsa.find(salsa => this.isColliding(salsa));
+        if (salsa) {
+            this.collecting = true;
+            return salsa;
+        }
+        this.collecting = false;
+        return null;
+    }
+
+    removeObject(object) {
+        // Logic to remove the object from the canvas
+        this.world.removeObjectFromCanvas(object);
+        this.collecting = false; // Reset the flag after collecting
+    }
+
     animate() {
         setInterval(() => {
             this.walking_sound.pause();
@@ -120,11 +142,11 @@ class Character extends movableObject{
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
             } else {
-                if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && !this.isAboveGround()) {
-                    this.playAnimation(this.IMAGES_WALKING);
+                    if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && !this.isAboveGround()) {
+                        this.playAnimation(this.IMAGES_WALKING);
+                    }
                 }
-            }
-        }, 50);
+            },50);
 
         setInterval(() => {
             if (this.isAboveGround()) {
@@ -139,6 +161,13 @@ class Character extends movableObject{
             if (Date.now() - this.lastKeyPressTime > 15000) {
                 this.playAnimation(this.IMAGES_long_idle);
             }
-        }, 200)
+        }, 200);
+    }
+
+    checkIsCollecting() {
+        const collectedObject = this.isCollecting();
+        if (collectedObject) {
+            this.removeObject(collectedObject);
+        }
     }
 }

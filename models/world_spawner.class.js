@@ -13,7 +13,6 @@ class World_spawner extends DrawableObjects{
             this.y < moveObject.y + moveObject.height;
     }
 
-    /*TODO add Coin hare*/
     /**
      * add Coin
      */
@@ -26,7 +25,7 @@ class World_spawner extends DrawableObjects{
         }
     }
 
-    /*TODO rename to collect*/
+
     isHurt() {
         let timepassed = new Date().getTime() - this.lastHit; // Difference in ms
         timepassed = timepassed / 1000; // Difference in s
