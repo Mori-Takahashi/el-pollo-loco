@@ -1,5 +1,7 @@
 class ThrowableObject extends movableObject {
 
+    /*TODO Animated throw animation*/
+
 
     /**
      * new ThrowableObject(this.character.x + 100, this.character.y + 100);

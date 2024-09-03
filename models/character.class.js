@@ -154,6 +154,7 @@ class Character extends movableObject{
             }
         }, 80);
 
+        /*TODO add snooze sound */
         setInterval(() => {
             if (Date.now() - this.lastKeyPressTime > 100) {
                 this.playAnimation(this.IMAGES_IDLE);
