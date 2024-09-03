@@ -21,7 +21,7 @@ class SalsaBar extends DrawableObjects{
     }
 
     setPercentage(percentage) {
-        this.percentage = percentage;
+        this.percentage = percentage * 5;
         let path = this.IMAGES[this.resolveImageIndex()]
         this.img = this.imageCache[path];
     }
