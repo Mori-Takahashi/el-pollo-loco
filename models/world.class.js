@@ -30,6 +30,9 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
+            if (this.character.isDead()) {
+                this.restartGame();
+            }
         }, 200);
     }
 
@@ -162,4 +165,33 @@ class World {
 
         console.error('removeObjectFromCanvas: object not found in coins or salsa arrays');
     }
+
+    restartGame() {
+        this.clearCanvas();
+        this.character.y = 155;
+        this.character.x = 0;
+        this.character.energy = 100;
+
+        this.bottleInInventory = 0;
+        this.CoinsInInventory = 0;
+
+        this.throwableObjects = [];
+
+        this.statusBar.setPercentage(this.character.energy);
+        this.salsaBar.setPercentage(this.bottleInInventory);
+        this.coinBar.setPercentage(this.CoinsInInventory);
+    }
+
+    clearCanvas() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+
+/*    endGame() {
+        setInterval(() => {
+            if (this.character.isDead()){
+
+            }
+        }, 200);
+    }*/
 }
