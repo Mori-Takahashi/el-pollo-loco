@@ -71,6 +71,7 @@ class Character extends movableObject{
 
     world;
     walking_sound = new Audio('audio/walk_sound.mp3');
+    snoose_sound = new Audio('audio/snort.mp3');
 
 
 
@@ -113,12 +114,14 @@ class Character extends movableObject{
 
     animate() {
         setInterval(() => {
+
             this.walking_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.walking_sound.play();
                 this.otherDirection = false;
                 this.updateLastKeyPressTime();
+                this.snoose_sound.pause();
             }
 
             if (this.world.keyboard.LEFT && this.x > 0) {
@@ -126,11 +129,13 @@ class Character extends movableObject{
                 this.walking_sound.play();
                 this.otherDirection = true;
                 this.updateLastKeyPressTime();
+                this.snoose_sound.pause();
             }
 
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
                 this.updateLastKeyPressTime();
+                this.snoose_sound.pause();
             }
 
             this.world.camera_x = -this.x + 100;
@@ -155,13 +160,13 @@ class Character extends movableObject{
             }
         }, 80);
 
-        /*TODO add snooze sound */
         setInterval(() => {
             if (Date.now() - this.lastKeyPressTime > 100) {
                 this.playAnimation(this.IMAGES_IDLE);
             }
             if (Date.now() - this.lastKeyPressTime > 15000) {
                 this.playAnimation(this.IMAGES_long_idle);
+                this.snoose_sound.play();
             }
         }, 200);
     }
