@@ -1,8 +1,21 @@
+@font-face {
+    font-family: Bungee-Regular;
+    scr: url('font/Bungee-Regular.ttf'); format('truetype');
+}
+
+/*TODO fix font*/
+*{
+    font: Bungee-Regular;
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url("img/web_background/DALL_E_mexican_BG.webp");
+    font-family: 'DeineSchriftart', sans-serif;
 }
+
 canvas {
     background-color: black;
 }
