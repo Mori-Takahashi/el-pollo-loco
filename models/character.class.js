@@ -134,6 +134,7 @@ class Character extends movableObject{
             }
 
             this.world.camera_x = -this.x + 100;
+            console.log('other dirction', this.otherDirection);
         }, 1000 / 60);
 
         setInterval(() => {
