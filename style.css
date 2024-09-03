@@ -1,11 +1,11 @@
 @font-face {
-    font-family: Bungee-Regular;
-    scr: url('font/Bungee-Regular.ttf'); format('truetype');
+    font-family: 'Bungee-Regular';
+    src: url('font/Bungee-Regular.ttf') format('truetype');
 }
 
-/*TODO fix font*/
-*{
-    font: Bungee-Regular;
+@font-face {
+    font-family: 'Mexicana-Regular';
+    src: url('font/Mexicana.ttf') format('truetype');
 }
 
 body {
@@ -13,7 +13,9 @@ body {
     flex-direction: column;
     align-items: center;
     background-image: url("img/web_background/DALL_E_mexican_BG.webp");
-    font-family: 'DeineSchriftart', sans-serif;
+    font-family: 'Mexicana-Regular', sans-serif;
+    color: black;
+    font-size: 60px;
 }
 
 canvas {
