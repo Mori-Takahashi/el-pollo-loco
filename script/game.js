@@ -11,6 +11,18 @@ function initStartScreen() {
     drawStartScreen();
 }
 
+function checkBrowser() {
+    const userAgent = navigator.userAgent;
+    const lastUpdated = document.lastModified;
+
+    console.log(`Last updated: ${lastUpdated}`);
+    console.log(`Browser: ${userAgent}`);
+
+    if (userAgent.includes('OPR') || userAgent.includes('Opera')) {
+        alert('Info: An opera browser has been detected that may cause the game to not work properly');
+    }
+}
+
 function drawStartScreen() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(startScreenImage, 0, 0, canvas.width, canvas.height);

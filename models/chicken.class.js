@@ -1,4 +1,5 @@
 class Chicken extends movableObject {
+    isChickenDead = false;
     y = 330;
     height = 80;
     width = 70;
@@ -8,10 +9,22 @@ class Chicken extends movableObject {
         'img/3_enemies_chicken/chicken_normal/1_walk/3_w.png'
     ];
 
+    DEAD_IMAGE = [
+        'img/3_enemies_chicken/chicken_normal/2_dead/dead.png'
+    ];
+    DEAD_AUDIO = new Audio('audio/chicken_sound.mp3');
+
+
+    /**
+     * Is chicken dead
+     * @type {boolean} - true or false (True if chicken is dead)
+     */
+
+
     constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
-
+        this.loadImages(this.DEAD_IMAGE);
         this.x = 500 + Math.random() * 500;
         this.speed = 0.15 + Math.random() * 0.25;
         this.animate();
@@ -23,7 +36,28 @@ class Chicken extends movableObject {
         }, 1000 / 60)
 
         setInterval(() => {
-           this.playAnimation(this.IMAGES_WALKING);
+            if (this.isChickenDead === false) {
+                this.chickenWalkingAnimation();
+            } else {
+                this.chickenDeadAnimation();
+            }
         }, 200);
     }
+
+
+
+    chickenDeadAnimation() {
+        this.loadImage(this.DEAD_IMAGE);
+        this.DEAD_AUDIO.play();
+        setTimeout(() => {
+            this.IMAGES_DEAD = [];
+            console.log('dead');
+        }, 500);
+    }
+
+    chickenWalkingAnimation() {
+        this.playAnimation(this.IMAGES_WALKING);
+    }
+
+
 }

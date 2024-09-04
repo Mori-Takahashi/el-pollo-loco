@@ -30,6 +30,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
+            this.checkCollisionJumpOnEnemy();
             if (this.character.isDead()) {
                 this.restartGame();
             }
@@ -184,6 +185,16 @@ class World {
 
     clearCanvas() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    checkCollisionJumpOnEnemy() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+                    this.character.jump();
+                    this.character.energy += 5;
+                    enemy.isChickenDead = true;
+            }
+        });
     }
 
 

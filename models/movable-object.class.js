@@ -16,6 +16,7 @@ class movableObject extends  DrawableObjects{
     energy = 100;
     CoinsInInventory = 0;
     bottleInInventory = 0;
+    energy_BOSS = 100;
 
     lastHit = 0;
 
@@ -94,6 +95,15 @@ class movableObject extends  DrawableObjects{
     isDead() {
         return this.energy === 0;
     }
+
+    /**
+     * Is boss energy === 0
+     * @returns {boolean} - true or false
+     */
+    isDead_BOSS() {
+        return this.energy_BOSS === 0;
+    }
+    /*TODO Boss energy*/
 
 
     /**

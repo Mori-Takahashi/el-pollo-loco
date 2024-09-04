@@ -20,8 +20,10 @@ class Endboss extends movableObject{
         this.loadImages(this.IMAGES_WALKING);
         this.x = 2500;
         this.animate();
-
     }
+
+/*TODO add boss energy */
+
     animate() {
         setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING);
