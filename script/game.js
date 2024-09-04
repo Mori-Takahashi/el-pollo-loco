@@ -1,13 +1,50 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let startScreenImage = new Image();
+startScreenImage.src = 'img/9_intro_outro_screens/start/startscreen_1.png';
+
+/*TODO edit init function */
+function initStartScreen() {
+    canvas = document.getElementById('canvasField');
+    ctx = canvas.getContext('2d');
+    drawStartScreen();
+}
+
+function drawStartScreen() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(startScreenImage, 0, 0, canvas.width, canvas.height);
+    drawStartButton();
+}
+
+function drawStartButton() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+    ctx.fillRect(canvas.width / 2 - 75, 50, 150, 50);
+    ctx.fillStyle = '#FFDA07';
+    ctx.font = '20px Mexicana-Regular';
+    ctx.fillText('Start Game ▶️', canvas.width / 2 - 70, 85);
+    canvas.addEventListener('click', onCanvasClick);
+}
+
+function onCanvasClick(event) {
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    if (canvas.width / 2 - 75 <= x && x <= canvas.width / 2 + 75 && 50 <= y && y <= 100) {
+        initStart();
+    }
+}
+
+function initStart() {
+    canvas.removeEventListener('click', onCanvasClick);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    initLevel();
+    init();
+}
 
 function init() {
     canvas = document.getElementById('canvasField');
     world = new World(canvas, keyboard);
-
-
-
 }
 
 document.addEventListener('keydown', (e) => {
