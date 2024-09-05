@@ -201,12 +201,4 @@ class World {
         });
     }
 
-
-/*    endGame() {
-        setInterval(() => {
-            if (this.character.isDead()){
-
-            }
-        }, 200);
-    }*/
 }

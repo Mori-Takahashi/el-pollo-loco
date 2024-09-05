@@ -28,8 +28,6 @@ class ThrowableObject extends movableObject {
         }, 100);
     }
 
-    /* TODO: fix the throw method */
-
     /**
      * Throw bottle
      * @param x - x from character
