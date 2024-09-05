@@ -12,6 +12,7 @@ class World {
     throwableObjects = [];
     bottleInInventory = 0;
     CoinsInInventory = 0;
+    endboss = level1.enemies[8];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -20,11 +21,6 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        this.positionOfCharacter();
-    }
-
-    positionOfCharacter() {
-       return this.character.x;
     }
 
     setWorld() {
