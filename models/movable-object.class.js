@@ -110,7 +110,7 @@ class movableObject extends  DrawableObjects{
 
     /**
      * Animate images loop
-     * @param {array} images - Path of the array images (this.IMAGES_WALKING)
+     * @param {array} images - Path of the array images (this.IMAGES_BOSS_ALERT)
      */
     playAnimation(images) {
         let i = this.currentImage % images.length;

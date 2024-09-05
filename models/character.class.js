@@ -179,4 +179,12 @@ class Character extends movableObject{
             this.removeObject(collectedObject);
         }
     }
+
+    /**
+     * X position of the character
+     * @returns {number} - X position
+     */
+    getXPosition() {
+        return this.x
+    }
 }

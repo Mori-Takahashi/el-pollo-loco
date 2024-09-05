@@ -4,7 +4,7 @@ class Endboss extends movableObject{
     width = 250;
     y = 60;
 
-    IMAGES_WALKING = [
+    IMAGES_BOSS_ALERT = [
         'img/4_enemie_boss_chicken/2_alert/G5.png',
         'img/4_enemie_boss_chicken/2_alert/G6.png',
         'img/4_enemie_boss_chicken/2_alert/G7.png',
@@ -15,18 +15,79 @@ class Endboss extends movableObject{
         'img/4_enemie_boss_chicken/2_alert/G12.png'
     ];
 
+    IMAGES_BOSS_WALK = [
+        'img/4_enemie_boss_chicken/1_walk/G1.png',
+        'img/4_enemie_boss_chicken/1_walk/G2.png',
+        'img/4_enemie_boss_chicken/1_walk/G3.png',
+        'img/4_enemie_boss_chicken/1_walk/G4.png'
+    ];
+
+    IMAGES_BOSS_ATTACK = [
+        'img/4_enemie_boss_chicken/3_attack/G13.png',
+        'img/4_enemie_boss_chicken/3_attack/G14.png',
+        'img/4_enemie_boss_chicken/3_attack/G15.png',
+        'img/4_enemie_boss_chicken/3_attack/G16.png',
+        'img/4_enemie_boss_chicken/3_attack/G17.png',
+        'img/4_enemie_boss_chicken/3_attack/G18.png',
+        'img/4_enemie_boss_chicken/3_attack/G19.png',
+        'img/4_enemie_boss_chicken/3_attack/G20.png'
+    ];
+
+    IMAGES_BOSS_HURT = [
+        'img/4_enemie_boss_chicken/4_hurt/G21.png',
+        'img/4_enemie_boss_chicken/4_hurt/G22.png',
+        'img/4_enemie_boss_chicken/4_hurt/G23.png'
+    ];
+
+    IMAGES_BOSS_DEAD = [
+        'img/4_enemie_boss_chicken/5_dead/G24.png',
+        'img/4_enemie_boss_chicken/5_dead/G25.png',
+        'img/4_enemie_boss_chicken/5_dead/G26.png'
+    ];
+
+
+
     constructor() {
-        super().loadImage(this.IMAGES_WALKING[0]);
-        this.loadImages(this.IMAGES_WALKING);
+        super().loadImage(this.IMAGES_BOSS_ALERT[0]);
+        this.loadImages(this.IMAGES_BOSS_ALERT);
         this.x = 2500;
         this.animate();
     }
 
-/*TODO add boss energy */
+
+
+/*TODO add boss energy and boss Animation*/
 
     animate() {
+        let firstAnimation = 0;
+        let hadFirstContact = false;
+        let characterPosition = this.character.getXPosition();
+
         setInterval(() => {
-            this.playAnimation(this.IMAGES_WALKING);
+            if (firstAnimation < 8) {
+                this.playAnimation(this.IMAGES_BOSS_ALERT);
+            } else {
+                this.playAnimation(this.IMAGES_BOSS_WALK);
+            }
+
+            if (characterPosition > 1500 && !hadFirstContact) {
+                return firstAnimation = 0;
+                hadFirstContact = true;
+                console.log('reset');
+            }
+
         }, 200);
+
     }
+
+
+
+    checkPosition() {
+        if (this.x < 2000) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
 }
