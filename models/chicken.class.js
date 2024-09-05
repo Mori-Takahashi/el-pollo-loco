@@ -44,16 +44,24 @@ class Chicken extends movableObject {
         }, 200);
     }
 
+    /**
+     * for chicken dead sound.
+     * @type {boolean} - true or false (True if chicken audio was played)
+     */
+    audio_was_played = false;
+
 
 
     chickenDeadAnimation() {
         this.loadImage(this.DEAD_IMAGE);
-        this.DEAD_AUDIO.play();
-        setTimeout(() => {
-            this.IMAGES_DEAD = [];
-            console.log('dead');
-        }, 500);
+        if (!this.audio_was_played) {
+            this.DEAD_AUDIO.play();
+            this.audio_was_played = true;
+        }
     }
+
+
+
 
     chickenWalkingAnimation() {
         this.playAnimation(this.IMAGES_WALKING);

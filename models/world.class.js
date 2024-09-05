@@ -187,12 +187,16 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
+    /*TODO death animation should only be triggered 1 after the others and not all at the same time */
     checkCollisionJumpOnEnemy() {
-        this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+        this.level.enemies.forEach((enemy, index) => {
+            if ((this.character.isColliding(enemy) && this.character.isAboveGround() ) ) {
                     this.character.jump();
                     this.character.energy += 5;
                     enemy.isChickenDead = true;
+                    setTimeout(() => {
+                        this.level.enemies.splice(index, 1);
+                    }, 1000);
             }
         });
     }
