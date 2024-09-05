@@ -50,10 +50,13 @@ class Endboss extends movableObject{
     constructor() {
         super().loadImage(this.IMAGES_BOSS_ALERT[0]);
         this.loadImages(this.IMAGES_BOSS_ALERT);
+        this.loadImages(this.IMAGES_BOSS_WALK);
+        this.loadImages(this.IMAGES_BOSS_ATTACK);
+        this.loadImages(this.IMAGES_BOSS_HURT);
+        this.loadImages(this.IMAGES_BOSS_DEAD);
         this.x = 2500;
         this.animate();
     }
-
 
 
 /*TODO add boss energy and boss Animation*/
@@ -61,33 +64,27 @@ class Endboss extends movableObject{
     animate() {
         let firstAnimation = 0;
         let hadFirstContact = false;
-        let characterPosition = this.character.getXPosition();
 
         setInterval(() => {
+            let position = world.character.x;
+
             if (firstAnimation < 8) {
                 this.playAnimation(this.IMAGES_BOSS_ALERT);
             } else {
                 this.playAnimation(this.IMAGES_BOSS_WALK);
+                this.moveLeft();
             }
+            firstAnimation += 1;
+            console.log(firstAnimation);
 
-            if (characterPosition > 1500 && !hadFirstContact) {
-                return firstAnimation = 0;
+
+            if (position > 1500 && !hadFirstContact) {
+                firstAnimation = 0;
                 hadFirstContact = true;
                 console.log('reset');
             }
 
         }, 200);
-
-    }
-
-
-
-    checkPosition() {
-        if (this.x < 2000) {
-            return 1;
-        } else {
-            return 0;
-        }
     }
 
 }

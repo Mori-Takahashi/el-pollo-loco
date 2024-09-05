@@ -40,7 +40,6 @@ class SmallChicken extends movableObject {
         this.loadImage(this.DEAD_IMAGE);
         setTimeout(() => {
             this.IMAGES_DEAD = [];
-            console.log('dead');
         }, 500);
     }
 

@@ -141,7 +141,6 @@ class Character extends movableObject{
             }
 
             this.world.camera_x = -this.x + 100;
-            console.log('other dirction', this.otherDirection);
         }, 1000 / 60);
 
         setInterval(() => {
@@ -180,11 +179,8 @@ class Character extends movableObject{
         }
     }
 
-    /**
-     * X position of the character
-     * @returns {number} - X position
-     */
-    getXPosition() {
-        return this.x
+    returnX() {
+        return this.x;
     }
+
 }

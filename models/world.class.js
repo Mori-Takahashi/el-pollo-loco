@@ -20,6 +20,11 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.positionOfCharacter();
+    }
+
+    positionOfCharacter() {
+       return this.character.x;
     }
 
     setWorld() {
@@ -54,7 +59,6 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)){
-                console.log('Collision with Character', enemy, 'Energy', this.character.energy);
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
             }
@@ -62,7 +66,6 @@ class World {
 
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)){
-                console.log('Collision with', coin);
                 this.CoinsInInventory += 10;
                 this.character.colectingCoin();
                 this.coinBar.setPercentage(this.character.CoinsInInventory);
@@ -72,7 +75,6 @@ class World {
 
         this.level.salsa.forEach((salsa) => {
             if (this.character.isColliding(salsa)){
-                console.log('Collision with', salsa);
                 this.bottleInInventory++;
                 this.character.colectingSalsa();
                 this.salsaBar.setPercentage(this.character.bottleInInventory);
