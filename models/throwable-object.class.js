@@ -39,7 +39,7 @@ class ThrowableObject extends movableObject {
 
     animate() {
         setInterval(() => {
-            if (this.y > 300) {
+            if (this.y > 300 || this.isColliding(world.endboss)) {
                 this.playAnimation(this.BOTTLE_SMASH);
             } else {
                 this.playAnimation(this.BOTTLE_ROTAION);

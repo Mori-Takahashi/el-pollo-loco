@@ -211,7 +211,7 @@ class World {
     checkBottleBreak() {
         this.throwableObjects.forEach((bottle, index) => {
             console.log(bottle.y);
-            if (bottle.y > 300 || /*TODO add check collision with boss*/) {
+            if (bottle.y > 300 || this.endboss.isColliding(bottle)) {
                 bottle.isBottleSmash = true;
                 setTimeout(() => {
                     this.throwableObjects.splice(index, 1);
