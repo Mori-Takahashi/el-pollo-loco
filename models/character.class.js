@@ -109,9 +109,8 @@ class Character extends movableObject{
     }
 
     removeObject(object) {
-        // Logic to remove the object from the canvas
         this.world.removeObjectFromCanvas(object);
-        this.collecting = false; // Reset the flag after collecting
+        this.collecting = false;
     }
 
     animate() {
@@ -178,9 +177,4 @@ class Character extends movableObject{
             this.removeObject(collectedObject);
         }
     }
-
-    returnX() {
-        return this.x;
-    }
-
 }

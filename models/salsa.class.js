@@ -17,14 +17,7 @@ class Salsa extends movableObject {
     animate() {
         setInterval(() => {
             this.playAnimation(this.IMAGES);
-            this.checkCollisionWithBoss();
         }, 200);
     }
 
-    /*TODO add smash animation */
-    checkCollisionWithBoss() {
-        if (this.isColliding(world.endboss.x)) {
-            world.endboss.reduceBossEnergy();
-        }
-    }
 }

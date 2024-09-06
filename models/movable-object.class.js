@@ -39,7 +39,7 @@ class movableObject extends  DrawableObjects{
         if (this instanceof ThrowableObject) {
             return true;
         } else {
-            return this.y < 155
+            return this.y < 155;
         }
     }
 
@@ -134,6 +134,7 @@ class movableObject extends  DrawableObjects{
 
     reduceBossEnergy() {
         this.energy_BOSS -= 10;
+        console.log(this.energy_BOSS);
         if (this.energy_BOSS < 0) {
             this.energy_BOSS = 0;
         }

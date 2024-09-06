@@ -59,7 +59,7 @@ class Endboss extends movableObject{
     }
 
 
-/*TODO add boss energy and boss Animation*/
+/* TODO add boss energy and boss Animation */
 
     animate() {
         let firstAnimation = 0;
@@ -75,13 +75,13 @@ class Endboss extends movableObject{
                 this.moveLeft();
             }
             firstAnimation += 1;
-            console.log(firstAnimation);
+
 
 
             if (position > 1500 && !hadFirstContact) {
                 firstAnimation = 0;
                 hadFirstContact = true;
-                console.log('reset');
+
             }
 
         }, 200);

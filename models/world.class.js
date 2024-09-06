@@ -32,6 +32,7 @@ class World {
             this.checkCollisions();
             this.checkThrowObjects();
             this.checkCollisionJumpOnEnemy();
+            this.checkBottleBreak();
             if (this.character.isDead()) {
                 this.restartGame();
             }
@@ -60,6 +61,14 @@ class World {
             }
         });
 
+        this.level.salsa.forEach((salsa) => {
+            if (this.character.isColliding(salsa)){
+                this.character.colectingSalsa();
+                this.salsaBar.setPercentage(this.character.bottleInInventory);
+                this.character.checkIsCollecting();
+            }
+        });
+
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)){
                 this.CoinsInInventory += 10;
@@ -78,7 +87,7 @@ class World {
             }
         });
     }
-    
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
@@ -199,4 +208,23 @@ class World {
         });
     }
 
+    checkBottleBreak() {
+        this.throwableObjects.forEach((bottle, index) => {
+            console.log(bottle.y);
+            if (bottle.y > 300 || /*TODO add check collision with boss*/) {
+                bottle.isBottleSmash = true;
+                setTimeout(() => {
+                    this.throwableObjects.splice(index, 1);
+                }, 500);
+            }
+        });
+    }
+
+    /*TODO collision check*/
+    bossCollision() {
+        if (this.character.isColliding(this.endboss)) {
+            this.character.hit();
+            this.statusBar.setPercentage();
+        }
+    }
 }

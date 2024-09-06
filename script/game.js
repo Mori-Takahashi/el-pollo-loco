@@ -4,7 +4,6 @@ let keyboard = new Keyboard();
 let startScreenImage = new Image();
 startScreenImage.src = 'img/9_intro_outro_screens/start/startscreen_1.png';
 
-/*TODO edit init function */
 function initStartScreen() {
     canvas = document.getElementById('canvasField');
     ctx = canvas.getContext('2d');
