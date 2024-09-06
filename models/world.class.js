@@ -225,8 +225,9 @@ class World {
     bossCollision() {
         this.throwableObjects.forEach((bottle) => {
             if (this.endboss.isColliding(bottle)) {
-                this.endboss.reduceBossEnergy();
-                console.log('boss energy', this.endboss.energy_BOSS);
+                /*TODO FIX THIS!!!!!!!!!!!!!!!*/
+                this.bossBar.setPercentage(this.level.enemies);
+                console.log(this.level.enemies.energy_BOSS);
             }
         });
     }
