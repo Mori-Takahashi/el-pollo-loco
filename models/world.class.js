@@ -33,6 +33,7 @@ class World {
             this.checkThrowObjects();
             this.checkCollisionJumpOnEnemy();
             this.checkBottleBreak();
+            this.bossCollision();
             if (this.character.isDead()) {
                 this.restartGame();
             }
@@ -212,7 +213,6 @@ class World {
         this.throwableObjects.forEach((bottle, index) => {
             console.log(bottle.y);
             if (bottle.y > 300 || this.endboss.isColliding(bottle)) {
-                bottle.isBottleSmash = true;
                 setTimeout(() => {
                     this.throwableObjects.splice(index, 1);
                 }, 500);
@@ -220,11 +220,14 @@ class World {
         });
     }
 
+
     /*TODO collision check*/
     bossCollision() {
-        if (this.character.isColliding(this.endboss)) {
-            this.character.hit();
-            this.statusBar.setPercentage();
-        }
+        this.throwableObjects.forEach((bottle) => {
+            if (this.endboss.isColliding(bottle)) {
+                this.endboss.reduceBossEnergy();
+                console.log('boss energy', this.endboss.energy_BOSS);
+            }
+        });
     }
 }

@@ -120,6 +120,14 @@ class movableObject extends  DrawableObjects{
         this.currentImage++;
     }
 
+    reduceBossEnergy() {
+        this.energy_BOSS -= 10;
+        console.log(this.energy_BOSS);
+        if (this.energy_BOSS < 0) {
+            this.energy_BOSS = 0;
+        }
+    }
+
     moveLeft() {
             this.x -= this.speed;
     }
@@ -132,12 +140,5 @@ class movableObject extends  DrawableObjects{
         this.speedY = 30;
     }
 
-    reduceBossEnergy() {
-        this.energy_BOSS -= 10;
-        console.log(this.energy_BOSS);
-        if (this.energy_BOSS < 0) {
-            this.energy_BOSS = 0;
-        }
-    }
 
 }
