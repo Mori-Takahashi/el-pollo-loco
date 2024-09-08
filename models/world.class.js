@@ -87,7 +87,17 @@ class World {
                 this.character.checkIsCollecting();
             }
         });
+
+        this.throwableObjects.forEach((bottle) => {
+            if (this.endboss.isColliding(bottle)) {
+                /* TODO FIX THIS!!!!!!!!!!!!!!! */
+                this.bossBar.setPercentage(this.character.energy_BOSS);
+                this.character.reduceBossEnergy();
+            }
+        });
+
     }
+
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -225,9 +235,9 @@ class World {
     bossCollision() {
         this.throwableObjects.forEach((bottle) => {
             if (this.endboss.isColliding(bottle)) {
-                /*TODO FIX THIS!!!!!!!!!!!!!!!*/
-                this.bossBar.setPercentage(this.level.enemies);
-                console.log(this.level.enemies.energy_BOSS);
+                /* TODO FIX THIS!!!!!!!!!!!!!!! */
+                this.bossBar.setPercentage(this.endboss.energy);
+                this.movableObject.reduceBossEnergy();
             }
         });
     }
