@@ -76,8 +76,6 @@ class Endboss extends movableObject{
             }
             firstAnimation += 1;
 
-
-
             if (position > 1500 && !hadFirstContact) {
                 firstAnimation = 0;
                 hadFirstContact = true;

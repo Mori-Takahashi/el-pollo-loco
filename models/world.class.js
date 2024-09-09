@@ -13,6 +13,7 @@ class World {
     bottleInInventory = 0;
     CoinsInInventory = 0;
     endboss = level1.enemies[8];
+    debug = true;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -21,6 +22,21 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.runDebug();
+    }
+
+    runDebug() {
+        if (this.debug) {
+            console.warn('Debug mode is on');
+            setInterval(() => {
+                //console.log('Character x:', this.character.x, 'y:', this.character.y);
+                //console.log('Camera x:', this.camera_x);
+                console.log('Character energy:', this.character.energy);
+                //console.log('Character salsa:', this.character.bottleInInventory);
+                //console.log('Character coins:', this.character.CoinsInInventory);
+                console.log('Boss energy:', this.endboss.energy);
+            }, 1000);
+        }
     }
 
     setWorld() {
@@ -33,8 +49,7 @@ class World {
             this.checkThrowObjects();
             this.checkCollisionJumpOnEnemy();
             this.checkBottleBreak();
-            this.bossCollision();
-            if (this.character.isDead()) {
+            if (this.character.isDead() || this.character.isDead_BOSS()) {
                 this.restartGame();
             }
         }, 200);
@@ -91,8 +106,8 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             if (this.endboss.isColliding(bottle)) {
                 /* TODO FIX THIS!!!!!!!!!!!!!!! */
-                this.bossBar.setPercentage(this.character.energy_BOSS);
                 this.character.reduceBossEnergy();
+                this.bossBar.setPercentage(this.character.energy_BOSS);
             }
         });
 
@@ -232,13 +247,12 @@ class World {
 
 
     /*TODO collision check*/
-    bossCollision() {
+    /*bossCollision() {
         this.throwableObjects.forEach((bottle) => {
             if (this.endboss.isColliding(bottle)) {
-                /* TODO FIX THIS!!!!!!!!!!!!!!! */
                 this.bossBar.setPercentage(this.endboss.energy);
-                this.movableObject.reduceBossEnergy();
+                this.character.reduceBossEnergy();
             }
         });
-    }
+    }*/
 }
