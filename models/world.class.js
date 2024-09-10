@@ -15,7 +15,6 @@ class World {
     CoinsInInventory = 0;
     endboss = level1.enemies[8];
     debug = true;
-    backgroundMusic = new Audio('audio/background_music.mp3');
     /*todo add bg music*/
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -26,6 +25,8 @@ class World {
         this.run();
         this.runDebug();
     }
+
+
 
     runDebug() {
         if (this.debug) {

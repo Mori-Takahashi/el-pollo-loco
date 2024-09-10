@@ -4,6 +4,24 @@ let keyboard = new Keyboard();
 let startScreenImage = new Image();
 startScreenImage.src = 'img/9_intro_outro_screens/start/startscreen_1.png';
 let audio = true;
+let backgroundMusic = new Audio('audio/bg_music.mp3');
+backgroundMusic.loop = true;
+backgroundMusic.volume = 0.1;
+
+function startBackgroundMusic() {
+    setTimeout(() => {
+        if (audio) backgroundMusic.play();
+    }, 2000)
+}
+
+function setVolume(volume) {
+    document.getElementById('volumeSlider').value = backgroundMusic.volume;
+    backgroundMusic.volume = volume;
+}
+
+function stopBackgroundMusic() {
+    backgroundMusic.pause();
+}
 
 function initStartScreen() {
     canvas = document.getElementById('canvasField');
@@ -117,9 +135,13 @@ function changeAudio() {
     let audioButton = document.getElementById('audioButton');
     if (audio) {
         audio = false;
+        backgroundMusic.loop = false;
+        stopBackgroundMusic();
         audioButton.src = 'img/controll-icons/audio_off.svg';
     } else {
         audio = true;
+        backgroundMusic.loop = true;
+        startBackgroundMusic();
         audioButton.src = 'img/controll-icons/audio_on.svg';
     }
 }

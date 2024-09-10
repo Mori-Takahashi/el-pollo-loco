@@ -31,7 +31,7 @@
     <script src="script/game.js"></script>
     <script src="models/start.class.js"></script>
 </head>
-<body onload="initStartScreen(); checkBrowser();">
+<body onload="initStartScreen(); checkBrowser(); startBackgroundMusic();">
 <h1>El pollo loco</h1>
 <canvas id="canvasField" width="720" height="480">
     Your browser does not support the HTML5 canvas element.
@@ -39,6 +39,10 @@
 <div class="help" style="cursor: pointer">
     <img src="img/tutorial/quest.svg" alt="Control Help" onclick="showHelp()">
     <img src="img/controll-icons/audio_on.svg" alt="audio" id="audioButton" onclick="changeAudio()">
+    <div class="volume-control">
+        <label for="volumeSlider">Volume:</label>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.2" onchange="setVolume(this.value)">
+    </div>
 </div>
 <div class="help-text d-none" id="alertWindow">
     <div class="controlImage">
