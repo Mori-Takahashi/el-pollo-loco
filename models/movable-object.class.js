@@ -105,7 +105,6 @@ class movableObject extends  DrawableObjects{
     isDead_BOSS() {
         return this.energy_BOSS === 0;
     }
-    /*TODO Boss energy*/
 
 
     /**

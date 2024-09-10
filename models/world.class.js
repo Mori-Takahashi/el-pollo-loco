@@ -107,7 +107,6 @@ class World {
 
         this.throwableObjects.forEach((bottle) => {
             if (this.endboss.isColliding(bottle)) {
-                /* TODO FIX THIS!!!!!!!!!!!!!!! */
                 this.character.reduceBossEnergy();
                 this.bossBar.setPercentage(this.character.energy_BOSS);
             }
@@ -237,15 +236,4 @@ class World {
             }
         });
     }
-
-
-    /*TODO collision check*/
-    /*bossCollision() {
-        this.throwableObjects.forEach((bottle) => {
-            if (this.endboss.isColliding(bottle)) {
-                this.bossBar.setPercentage(this.endboss.energy);
-                this.character.reduceBossEnergy();
-            }
-        });
-    }*/
 }

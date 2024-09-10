@@ -47,32 +47,6 @@ class ThrowableObject extends movableObject {
         }, 100);
     }
 
-    /* TODO add smash animation */
-
-/*
-    this.checkCollisionWithBoss();
-    checkCollisionWithBoss() {
-        if (this.isColliding(world.endboss.x)) {
-            world.endboss.reduceBossEnergy();
-        }
-    }
-
-    */
-    /*ANIMATION*/
-    /*
-    *
-         animate() {
-        setInterval(() => {
-            if (this.isAboveGround() || !this.isColliding) {
-                this.playAnimation(this.BOTTLE_SMASH);
-            } else {
-                this.playAnimation(this.BOTTLE_ROTAION);
-            }
-        }, 100);
-    }
-    *
-    * */
-
     /**
      * Throw bottle
      * @param x - x from character
