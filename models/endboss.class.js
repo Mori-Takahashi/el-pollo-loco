@@ -55,11 +55,10 @@ class Endboss extends movableObject{
         this.loadImages(this.IMAGES_BOSS_HURT);
         this.loadImages(this.IMAGES_BOSS_DEAD);
         this.x = 2500;
+        this.speed = 0.15 + Math.random() * 0.25;
         this.animate();
     }
 
-
-/* TODO add boss energy and boss Animation */
 
     animate() {
         let firstAnimation = 0;
@@ -71,18 +70,67 @@ class Endboss extends movableObject{
             if (firstAnimation < 8) {
                 this.playAnimation(this.IMAGES_BOSS_ALERT);
             } else {
-                this.playAnimation(this.IMAGES_BOSS_WALK);
-                this.moveLeft();
+                this.startMoving(hadFirstContact);
             }
             firstAnimation += 1;
 
             if (position > 1500 && !hadFirstContact) {
                 firstAnimation = 0;
                 hadFirstContact = true;
-
             }
 
         }, 200);
     }
+
+    startMoving(hadFirstContact) {
+        if (hadFirstContact === true && !this.startAttackIntervalStarted) {
+            this.startAttackIntervalStarted = true;
+            setInterval(() => {
+                console.log('Start attack interval');
+                this.startAttackInterval();
+            }, 2000);
+        }
+    }
+
+    /* TODO fix attack interval */
+
+    startAttackInterval() {
+        let randomAction = this.getRandomNumber();
+        console.log('Random num action', randomAction);
+        if (randomAction === 1) {
+            this.startMovingLeft();
+        } else if (randomAction === 2) {
+            this.startMovingRight();
+        } else if (randomAction === 3) {
+            this.startAttack();
+        }
+    }
+
+    getRandomNumber() {
+        return Math.floor(Math.random() * 3) + 1;
+    }
+
+    startMovingLeft() {
+        if (this.moveLeftInterval) clearInterval(this.moveLeftInterval);
+        this.moveLeftInterval = setInterval(() => {
+            this.moveLeft();
+            this.playAnimation(this.IMAGES_BOSS_WALK);
+        }, 200);
+    }
+
+    startAttack() {
+        this.jump();
+        this.playAnimation(this.IMAGES_BOSS_ATTACK);
+    }
+
+    startMovingRight() {
+        if (this.moveRightInterval) clearInterval(this.moveRightInterval);
+        this.moveRightInterval = setInterval(() => {
+            this.moveRight();
+            this.playAnimation(this.IMAGES_BOSS_WALK);
+        }, 200);
+    }
+
+
 
 }
