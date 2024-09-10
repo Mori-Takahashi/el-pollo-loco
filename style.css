@@ -52,3 +52,15 @@ canvas {
 .help img{
     width: 40px;
 }
+
+label {
+    font-size: 30px;
+    color: white;
+}
+
+.help {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 720px;
+}
