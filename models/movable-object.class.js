@@ -69,7 +69,7 @@ class movableObject extends  DrawableObjects{
 
     colectingCoin() {
         this.CoinsInInventory += 10;
-        this.COIN_SOUND.play();
+        if (audio) this.COIN_SOUND.play();
         if (this.CoinsInInventory <= 0) {
             this.CoinsInInventory = 0;
         }
@@ -77,7 +77,7 @@ class movableObject extends  DrawableObjects{
 
     colectingSalsa() {
         this.bottleInInventory += 1;
-        this.salsa_SOUND.play();
+        if (audio) this.salsa_SOUND.play();
         if (this.bottleInInventory <= 0) {
             this.bottleInInventory = 0;
         }

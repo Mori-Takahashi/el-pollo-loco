@@ -14,8 +14,9 @@ class World {
     bottleInInventory = 0;
     CoinsInInventory = 0;
     endboss = level1.enemies[8];
-    debug = false;
-
+    debug = true;
+    backgroundMusic = new Audio('audio/background_music.mp3');
+    /*todo add bg music*/
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -32,11 +33,12 @@ class World {
             setInterval(() => {
                 //console.log('Character x:', this.character.x, 'y:', this.character.y);
                 //console.log('Camera x:', this.camera_x);
-                console.log('Character energy:', this.character.energy);
+                //console.log('Character energy:', this.character.energy);
                 //console.log('Character salsa:', this.character.bottleInInventory);
                 //console.log('Character coins:', this.character.CoinsInInventory);
                 //console.log('Boss energy:', this.endboss.energy);
-                console.log('endscreen:', this.endscreen);
+                //console.log('endscreen:', this.endscreen);
+                console.log('audio on/off:', audio);
             }, 1000);
         }
     }

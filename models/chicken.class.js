@@ -55,7 +55,7 @@ class Chicken extends movableObject {
     chickenDeadAnimation() {
         this.loadImage(this.DEAD_IMAGE);
         if (!this.audio_was_played) {
-            this.DEAD_AUDIO.play();
+            if (audio) this.DEAD_AUDIO.play();
             this.audio_was_played = true;
         }
     }

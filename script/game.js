@@ -3,6 +3,7 @@ let world;
 let keyboard = new Keyboard();
 let startScreenImage = new Image();
 startScreenImage.src = 'img/9_intro_outro_screens/start/startscreen_1.png';
+let audio = true;
 
 function initStartScreen() {
     canvas = document.getElementById('canvasField');
@@ -111,8 +112,6 @@ function closeHelpWindow() {
     helpWindow.classList.remove('d-flex');
     helpWindow.classList.add('d-none');
 }
-
-let audio = true;
 
 function changeAudio() {
     let audioButton = document.getElementById('audioButton');

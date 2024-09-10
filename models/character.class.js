@@ -119,7 +119,7 @@ class Character extends movableObject{
             this.walking_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
-                this.walking_sound.play();
+                if (audio) this.walking_sound.play();
                 this.otherDirection = false;
                 this.updateLastKeyPressTime();
                 this.snoose_sound.pause();
@@ -127,7 +127,7 @@ class Character extends movableObject{
 
             if (this.world.keyboard.LEFT && this.x > 0) {
                 this.moveLeft();
-                this.walking_sound.play();
+                if (audio) this.walking_sound.play();
                 this.otherDirection = true;
                 this.updateLastKeyPressTime();
                 this.snoose_sound.pause();
