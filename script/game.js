@@ -111,3 +111,16 @@ function closeHelpWindow() {
     helpWindow.classList.remove('d-flex');
     helpWindow.classList.add('d-none');
 }
+
+let audio = true;
+
+function changeAudio() {
+    let audioButton = document.getElementById('audioButton');
+    if (audio) {
+        audio = false;
+        audioButton.src = 'img/controll-icons/audio_off.svg';
+    } else {
+        audio = true;
+        audioButton.src = 'img/controll-icons/audio_on.svg';
+    }
+}
