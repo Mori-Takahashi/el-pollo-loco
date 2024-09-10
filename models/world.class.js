@@ -35,7 +35,8 @@ class World {
                 console.log('Character energy:', this.character.energy);
                 //console.log('Character salsa:', this.character.bottleInInventory);
                 //console.log('Character coins:', this.character.CoinsInInventory);
-                console.log('Boss energy:', this.endboss.energy);
+                //console.log('Boss energy:', this.endboss.energy);
+                console.log('endscreen:', this.endscreen);
             }, 1000);
         }
     }

@@ -1,25 +1,46 @@
 class Endscreen extends DrawableObjects{
     IMAGES = [
-        'img/9_intro_outro_screens/game_over/game over!.png',
-        'img/9_intro_outro_screens/win/win_1.png'
+        { src: 'img/9_intro_outro_screens/game_over/game over!.png', id: 'gameOverImage' },
+        { src: 'img/9_intro_outro_screens/win/win_1.png', id: 'winImage' }
     ];
 
     constructor() {
-        super();
-        this.loadImages(this.IMAGES);
-        this.x = 200;
-        this.y = 100;
-        this.width = 1000;
-        this.height = 400;
+        super().loadImage(this.IMAGES[0].src);
+        this.loadImages(this.IMAGES.map(image => image.src));
+        this.addImagesToDOM();
+        this.hideImages();
     }
 
-    /*TODO fix endscreen */
+    addImagesToDOM() {
+        this.IMAGES.forEach((image) => {
+            const img = new Image();
+            img.src = image.src;
+            img.id = image.id;
+            document.body.appendChild(img);
+        });
+    }
+
+    hideImages() {
+        this.IMAGES.forEach((image) => {
+            const img = document.getElementById(image.id);
+            if (img) {
+                img.style.display = 'none';
+            }
+        });
+    }
 
     setGameOver() {
-        this.img = this.imageCache[this.IMAGES[0]];
+        this.showImage(this.IMAGES[0].id);
     }
 
     setGameWon() {
-        this.img = this.imageCache[this.IMAGES[1]];
+        this.showImage(this.IMAGES[1].id);
+    }
+
+    showImage(id) {
+        const img = document.getElementById(id);
+        if (img) {
+            img.style.display = 'unset';
+        }
     }
 }
