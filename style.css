@@ -21,3 +21,34 @@ body {
 canvas {
     background-color: black;
 }
+
+.d-none {
+    display: none;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.help-text {
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #925f0d;
+    text-align: center;
+    font-size: calc(20px + 1vw);
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
+.controlImage {
+    width: 40%;
+}
+
+.help img{
+    width: 40px;
+}

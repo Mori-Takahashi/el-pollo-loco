@@ -99,3 +99,15 @@ document.addEventListener('keyup', (e) => {
         keyboard.D = false;
     }
 })
+
+function showHelp() {
+    let helpWindow = document.getElementById('alertWindow');
+    helpWindow.classList.remove('d-none');
+    helpWindow.classList.add('d-flex');
+}
+
+function closeHelpWindow() {
+    let helpWindow = document.getElementById('alertWindow');
+    helpWindow.classList.remove('d-flex');
+    helpWindow.classList.add('d-none');
+}
