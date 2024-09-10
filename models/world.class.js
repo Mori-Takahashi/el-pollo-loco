@@ -9,6 +9,7 @@ class World {
     salsaBar = new SalsaBar();
     coinBar = new CoinBar();
     bossBar = new StatusbarBoss();
+    endscreen = new Endscreen();
     throwableObjects = [];
     bottleInInventory = 0;
     CoinsInInventory = 0;
@@ -125,6 +126,7 @@ class World {
         this.addToMap(this.salsaBar);
         this.addToMap(this.coinBar);
         this.addToMap(this.bossBar);
+        this.addToMap(this.endscreen);
         this.ctx.translate(this.camera_x, 0); // forwards for statusbar
         /*  find me */
         this.addToMap(this.character);
@@ -201,24 +203,14 @@ class World {
     }
 
     restartGame() {
-        this.clearCanvas();
-        this.character.y = 155;
-        this.character.x = 0;
-        this.character.energy = 100;
-
-        this.bottleInInventory = 0;
-        this.CoinsInInventory = 0;
-
-        this.throwableObjects = [];
-
-        this.statusBar.setPercentage(this.character.energy);
-        this.salsaBar.setPercentage(this.bottleInInventory);
-        this.coinBar.setPercentage(this.CoinsInInventory);
+       if (this.character.isDead()) {
+        this.endscreen.setGameOver();
+       }
+       if (this.character.isDead_BOSS()) {
+        this.endscreen.setGameWon();
+       }
     }
 
-    clearCanvas() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    }
 
     /*TODO death animation should only be triggered 1 after the others and not all at the same time */
     checkCollisionJumpOnEnemy() {
