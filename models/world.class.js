@@ -15,7 +15,6 @@ class World {
     CoinsInInventory = 0;
     endboss = level1.enemies[8];
     debug = true;
-    /*todo add bg music*/
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;

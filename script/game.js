@@ -15,7 +15,6 @@ function startBackgroundMusic() {
 }
 
 function setVolume(volume) {
-    document.getElementById('volumeSlider').value = backgroundMusic.volume;
     backgroundMusic.volume = volume;
 }
 
