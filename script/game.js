@@ -144,3 +144,7 @@ function changeAudio() {
         audioButton.src = 'img/controll-icons/audio_on.svg';
     }
 }
+
+function restartGame() {
+    location.reload();
+}
