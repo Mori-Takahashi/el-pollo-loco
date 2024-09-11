@@ -14,7 +14,7 @@ class World {
     bottleInInventory = 0;
     CoinsInInventory = 0;
     endboss = level1.enemies[8];
-    debug = false;
+    debug = true;
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -34,11 +34,11 @@ class World {
                 //console.log('Character x:', this.character.x, 'y:', this.character.y);
                 //console.log('Camera x:', this.camera_x);
                 //console.log('Character energy:', this.character.energy);
-                //console.log('Character salsa:', this.character.bottleInInventory);
-                //console.log('Character coins:', this.character.CoinsInInventory);
+                console.log('Character salsa:', this.character.bottleInInventory);
+                console.log('Character coins:', this.character.CoinsInInventory);
                 //console.log('Boss energy:', this.endboss.energy);
                 //console.log('endscreen:', this.endscreen);
-                console.log('audio on/off:', audio);
+                //console.log('audio on/off:', audio);
             }, 1000);
         }
     }
@@ -112,6 +112,11 @@ class World {
                 this.character.reduceBossEnergy();
                 this.bossBar.setPercentage(this.character.energy_BOSS);
                 this.endboss.bossHurt();
+                if (this.character.isDead_BOSS()) {
+                    setTimeout(() => {
+                        this.level.enemies.splice(8, 1);
+                    }, 2000);
+                }
             }
         });
 

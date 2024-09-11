@@ -47,8 +47,4 @@ class DrawableObjects {
             this.imageCache[path] = img;
         });
     }
-
-    characterPosition() {
-
-    }
 }

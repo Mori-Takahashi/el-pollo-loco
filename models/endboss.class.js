@@ -46,6 +46,7 @@ class Endboss extends movableObject{
     ];
 
     hurtAudio = new Audio('audio/big-chicken.mp3');
+    isBossDead = false;
 
 
     constructor() {
@@ -95,6 +96,12 @@ class Endboss extends movableObject{
                 firstAnimation = 0;
                 hadFirstContact = true;
             }
+            /*TODO fix death animation*/
+            if (this.isDead_BOSS()) {
+                this.playAnimation(this.IMAGES_BOSS_DEAD);
+                this.isBossDead = true;
+                //clearInterval(this.currentInterval);
+            }
 
         }, 200);
     }
@@ -128,8 +135,10 @@ class Endboss extends movableObject{
                 this.currentIntervalAnimation = setInterval(() => this.animationAttack(), 200);
             }
         } else {
-            clearInterval(this.currentInterval);
-            clearInterval(this.currentIntervalAnimation);
+            if (this.isBossDead) {
+                clearInterval(this.currentInterval);
+                clearInterval(this.currentIntervalAnimation);
+            }
         }
     }
 

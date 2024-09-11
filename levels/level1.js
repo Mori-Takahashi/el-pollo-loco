@@ -33,6 +33,10 @@ level1 = new Level(
             new Salsa(),
             new Salsa(),
             new Salsa(),
+            new Salsa(),
+            new Salsa(),
+            new Salsa(),
+            new Salsa(),
             new Salsa()
         ],
         [
