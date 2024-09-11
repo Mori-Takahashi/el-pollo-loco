@@ -129,13 +129,7 @@ class World {
         this.addToMap(this.salsaBar);
         this.addToMap(this.coinBar);
         this.addToMap(this.bossBar);
-
-        if (this.character.isDead()) {
-            this.addToMap(this.endscreen.setGameOver());
-        } else if (this.character.isDead_BOSS()) {
-            this.addToMap(this.endscreen.setGameWon());
-        }
-
+        if (this.character.isDead() || this.character.isDead_BOSS()) this.addToMap(this.endscreen);
         this.ctx.translate(this.camera_x, 0); // forwards for statusbar
         /*  find me */
         this.addToMap(this.character);
