@@ -4,6 +4,8 @@ class Endscreen extends DrawableObjects{
         { src: 'img/9_intro_outro_screens/win/win_1.png', id: 'winImage' }
     ];
 
+    canvas = document.getElementById('canvasField');
+
     constructor() {
         super().loadImage(this.IMAGES[0].src);
         this.loadImages(this.IMAGES.map(image => image.src));
@@ -31,6 +33,7 @@ class Endscreen extends DrawableObjects{
 
     setGameOver() {
         this.showImage(this.IMAGES[0].id);
+        canvas.style.display = 'none';
     }
 
     setGameWon() {
