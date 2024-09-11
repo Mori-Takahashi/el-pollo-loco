@@ -55,7 +55,8 @@ class Endboss extends movableObject{
         this.loadImages(this.IMAGES_BOSS_HURT);
         this.loadImages(this.IMAGES_BOSS_DEAD);
         this.x = 2500;
-        this.speed = 0.15 + Math.random() * 0.25;
+        //this.speed = 0.15 + Math.random() * 0.25;
+        this.speed = 0.80;
         this.animate();
     }
 
@@ -88,25 +89,24 @@ class Endboss extends movableObject{
             setInterval(() => {
                 console.log('Start attack interval');
                 this.startAttackInterval();
-            }, 5000);
+            }, 3000);
         }
     }
-
-    /* TODO fix interval (not moving) */
 
     startAttackInterval() {
         let randomAction = this.getRandomNumber();
         clearInterval(this.currentInterval);
+        clearInterval(this.currentIntervalAnimation);
         if (randomAction === 1) {
             this.currentInterval = setInterval(() => this.startMovingLeft(), 1000 / 60);
-            console.log('Move left', this.currentInterval);
+            this.currentIntervalAnimation = setInterval(() => this.animationWalk(), 200);
         } else if (randomAction === 2) {
             this.currentInterval = setInterval(() => this.startMovingRight(), 1000 / 60);
-            console.log('Move right', this.currentInterval);
+            this.currentIntervalAnimation = setInterval(() => this.animationWalk(), 200);
         } else if (randomAction === 3) {
             this.startAttack();
             this.currentInterval = setInterval(() => this.startAttack(), 1000 / 60);
-            console.log('Start attack', this.currentInterval);
+            this.currentIntervalAnimation = setInterval(() => this.animationAttack(), 200);
         }
     }
 
@@ -116,19 +116,23 @@ class Endboss extends movableObject{
 
     startMovingLeft() {
         this.moveLeft();
-        this.playAnimation(this.IMAGES_BOSS_WALK);
     }
 
     startAttack() {
         this.jump();
-        this.playAnimation(this.IMAGES_BOSS_ATTACK);
     }
 
     startMovingRight() {
         this.moveRight();
+    }
+
+    animationWalk() {
         this.playAnimation(this.IMAGES_BOSS_WALK);
     }
 
+    animationAttack() {
+        this.playAnimation(this.IMAGES_BOSS_ATTACK);
+    }
 
 
 }
