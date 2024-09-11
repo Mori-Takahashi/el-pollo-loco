@@ -45,6 +45,7 @@ class Endboss extends movableObject{
         'img/4_enemie_boss_chicken/5_dead/G26.png'
     ];
 
+    hurtAudio = new Audio('audio/big-chicken.mp3');
 
 
     constructor() {
@@ -55,9 +56,24 @@ class Endboss extends movableObject{
         this.loadImages(this.IMAGES_BOSS_HURT);
         this.loadImages(this.IMAGES_BOSS_DEAD);
         this.x = 2500;
-        //this.speed = 0.15 + Math.random() * 0.25;
         this.speed = 0.80;
         this.animate();
+    }
+
+    isBossHit = false;
+
+    bossHurt() {
+        this.isBossHit = true;
+        this.hurtAudio.play();
+        setInterval(() => {
+            if (this.isBossHit) {
+                this.playAnimation(this.IMAGES_BOSS_HURT);
+            }
+        }, 400);
+
+        setTimeout(() => {
+            this.isBossHit = false;
+        }, 2000);
     }
 
 
@@ -87,7 +103,6 @@ class Endboss extends movableObject{
         if (hadFirstContact === true && !this.startAttackIntervalStarted) {
             this.startAttackIntervalStarted = true;
             setInterval(() => {
-                console.log('Start attack interval');
                 this.startAttackInterval();
             }, 3000);
         }
@@ -97,16 +112,24 @@ class Endboss extends movableObject{
         let randomAction = this.getRandomNumber();
         clearInterval(this.currentInterval);
         clearInterval(this.currentIntervalAnimation);
-        if (randomAction === 1) {
-            this.currentInterval = setInterval(() => this.startMovingLeft(), 1000 / 60);
-            this.currentIntervalAnimation = setInterval(() => this.animationWalk(), 200);
-        } else if (randomAction === 2) {
-            this.currentInterval = setInterval(() => this.startMovingRight(), 1000 / 60);
-            this.currentIntervalAnimation = setInterval(() => this.animationWalk(), 200);
-        } else if (randomAction === 3) {
-            this.startAttack();
-            this.currentInterval = setInterval(() => this.startAttack(), 1000 / 60);
-            this.currentIntervalAnimation = setInterval(() => this.animationAttack(), 200);
+        if (this.isBossHit === false) {
+            if (randomAction === 1) {
+                /*move left*/
+                this.currentInterval = setInterval(() => this.startMovingLeft(), 1000 / 60);
+                this.currentIntervalAnimation = setInterval(() => this.animationWalk(), 200);
+            } else if (randomAction === 2) {
+                /*move right*/
+                this.currentInterval = setInterval(() => this.startMovingRight(), 1000 / 60);
+                this.currentIntervalAnimation = setInterval(() => this.animationWalk(), 200);
+            } else if (randomAction === 3) {
+                /*attack*/
+                this.startAttack();
+                this.currentInterval = setInterval(() => this.startAttack(), 1000 / 60);
+                this.currentIntervalAnimation = setInterval(() => this.animationAttack(), 200);
+            }
+        } else {
+            clearInterval(this.currentInterval);
+            clearInterval(this.currentIntervalAnimation);
         }
     }
 

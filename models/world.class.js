@@ -111,6 +111,7 @@ class World {
             if (this.endboss.isColliding(bottle)) {
                 this.character.reduceBossEnergy();
                 this.bossBar.setPercentage(this.character.energy_BOSS);
+                this.endboss.bossHurt();
             }
         });
 
