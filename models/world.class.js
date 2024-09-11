@@ -14,7 +14,7 @@ class World {
     bottleInInventory = 0;
     CoinsInInventory = 0;
     endboss = level1.enemies[8];
-    debug = true;
+    debug = false;
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;

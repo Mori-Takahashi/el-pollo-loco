@@ -88,21 +88,25 @@ class Endboss extends movableObject{
             setInterval(() => {
                 console.log('Start attack interval');
                 this.startAttackInterval();
-            }, 2000);
+            }, 5000);
         }
     }
 
-    /* TODO fix attack interval */
+    /* TODO fix interval (not moving) */
 
     startAttackInterval() {
         let randomAction = this.getRandomNumber();
-        console.log('Random num action', randomAction);
+        clearInterval(this.currentInterval);
         if (randomAction === 1) {
-            this.startMovingLeft();
+            this.currentInterval = setInterval(() => this.startMovingLeft(), 1000 / 60);
+            console.log('Move left', this.currentInterval);
         } else if (randomAction === 2) {
-            this.startMovingRight();
+            this.currentInterval = setInterval(() => this.startMovingRight(), 1000 / 60);
+            console.log('Move right', this.currentInterval);
         } else if (randomAction === 3) {
             this.startAttack();
+            this.currentInterval = setInterval(() => this.startAttack(), 1000 / 60);
+            console.log('Start attack', this.currentInterval);
         }
     }
 
@@ -111,11 +115,8 @@ class Endboss extends movableObject{
     }
 
     startMovingLeft() {
-        if (this.moveLeftInterval) clearInterval(this.moveLeftInterval);
-        this.moveLeftInterval = setInterval(() => {
-            this.moveLeft();
-            this.playAnimation(this.IMAGES_BOSS_WALK);
-        }, 200);
+        this.moveLeft();
+        this.playAnimation(this.IMAGES_BOSS_WALK);
     }
 
     startAttack() {
@@ -124,11 +125,8 @@ class Endboss extends movableObject{
     }
 
     startMovingRight() {
-        if (this.moveRightInterval) clearInterval(this.moveRightInterval);
-        this.moveRightInterval = setInterval(() => {
-            this.moveRight();
-            this.playAnimation(this.IMAGES_BOSS_WALK);
-        }, 200);
+        this.moveRight();
+        this.playAnimation(this.IMAGES_BOSS_WALK);
     }
 
 
