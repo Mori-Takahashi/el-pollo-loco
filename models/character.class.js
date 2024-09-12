@@ -1,7 +1,7 @@
 class Character extends movableObject{
 
     height = 280;
-    y = 155;
+    y = 155; // 155
     speed = 10;
     lastKeyPressTime = Date.now();
     collecting = false;
@@ -87,6 +87,7 @@ class Character extends movableObject{
         this.loadImages(this.IMAGES_long_idle);
         this.applyGravity();
         this.animate();
+        this.jumpOneTime = false;
     }
 
     updateLastKeyPressTime() {
@@ -145,6 +146,7 @@ class Character extends movableObject{
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
+                this.deadLikeMario();
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
             } else {
@@ -175,6 +177,18 @@ class Character extends movableObject{
         const collectedObject = this.isCollecting();
         if (collectedObject) {
             this.removeObject(collectedObject);
+        }
+    }
+
+    deadLikeMario() {
+        if (!this.jumpOneTime) {
+            this.jumpOneTime = true;
+            this.jump();
+            setTimeout(() => {
+                this.y = 400;
+            }, 1000);
+
+            console.log('jumpOneTime', this.y);
         }
     }
 }

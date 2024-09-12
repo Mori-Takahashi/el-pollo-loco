@@ -54,7 +54,7 @@ class World {
             this.checkCollisionJumpOnEnemy();
             this.checkBottleBreak();
             if (this.character.isDead() || this.character.isDead_BOSS()) {
-                this.restartGame();
+                this.showEndGame();
             }
         }, 200);
     }
@@ -210,20 +210,23 @@ class World {
         console.error('removeObjectFromCanvas: object not found in coins or salsa arrays');
     }
 
-    restartGame() {
+    showEndGame() {
        if (this.character.isDead()) {
         this.endscreen.setGameOver();
        }
        if (this.character.isDead_BOSS()) {
         this.endscreen.setGameWon();
        }
+       setTimeout(() => {
+           restartGame();
+       }, 5000);
     }
 
 
     /*TODO death animation should only be triggered 1 after the others and not all at the same time */
     checkCollisionJumpOnEnemy() {
         this.level.enemies.forEach((enemy, index) => {
-            if ((this.character.isColliding(enemy) && this.character.isAboveGround() ) ) {
+            if ((this.character.isColliding(enemy) && this.character.isAboveGround()) && this.character.isDead() === false) {
                     this.character.jump();
                     this.character.energy += 5;
                     enemy.isChickenDead = true;
