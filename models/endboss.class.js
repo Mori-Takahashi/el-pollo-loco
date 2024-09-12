@@ -65,7 +65,7 @@ class Endboss extends movableObject{
 
     bossHurt() {
         this.isBossHit = true;
-        this.hurtAudio.play();
+        if (audio) this.hurtAudio.play();
         setInterval(() => {
             if (this.isBossHit) {
                 this.playAnimation(this.IMAGES_BOSS_HURT);

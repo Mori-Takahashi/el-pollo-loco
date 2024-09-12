@@ -55,6 +55,15 @@ function drawStartButton() {
     canvas.addEventListener('click', onCanvasClick);
 }
 
+function drawRestartButton() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+    ctx.fillRect(canvas.width / 2 - 75, 50, 150, 50);
+    ctx.fillStyle = '#FFDA07';
+    ctx.font = '20px Mexicana-Regular';
+    ctx.fillText('Restart Game 🔄', canvas.width / 2 - 70, 85);
+    canvas.addEventListener('click', onCanvasClick);
+}
+
 function onCanvasClick(event) {
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
