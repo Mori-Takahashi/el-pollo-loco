@@ -32,7 +32,6 @@
     <script src="models/start.class.js"></script>
 </head>
 <body onload="initStartScreen(); checkBrowser(); startBackgroundMusic();">
-<h1>El pollo loco</h1>
 <canvas id="canvasField" width="720" height="480">
     Your browser does not support the HTML5 canvas element.
 </canvas>
@@ -44,7 +43,7 @@
         <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.1" onchange="setVolume(this.value)">
     </div>
 </div>
-    <button onclick="restartGame()">Restart</button>
+    <button class="restart-btn" onclick="restartGame()">Restart</button>
 <div class="help-text d-none" id="alertWindow">
     <div class="controlImage">
         <img style="cursor: pointer" src="img/controll-icons/close.png" alt="close Image" onclick="closeHelpWindow()">
@@ -56,16 +55,11 @@
 
     <h2>Story</h2>
     <span>
-        Pepe, der abenteuerlustige Mexikaner, hatte sich in der heißen Wüste verirrt. Die Sonne brannte so stark, dass er langsam den Verstand verlor. Plötzlich hörte er eine mysteriöse Stimme: „Pepe, du musst die Welt retten!“ Eine schimmernde Tür erschien vor ihm, und bevor er es sich versah, wurde er hineingezogen.
-
-Er fand sich in einer seltsamen, zweidimensionalen Welt wieder – überall sprangen Hühnchen umher. „Was zur Hölle?“ dachte er verwirrt. Doch die Stimme klang wieder: „Spring auf die Hühnchen, Pepe!“ Er zögerte nicht lange und sprang. Mit einem lauten Platsch wurden die Hühnchen platt, als ob sie aus Gummi wären.
-
-Je weiter er vorankam, desto mehr Hühnchen sprangen auf ihn zu. Manche waren flink, andere waren Langsamer, aber Pepe machte sie alle platt. Sein Weg führte ihn in einer großen fläsche, wo ein unheilvolles Gackern aus der Fehrne ertönte.
-
-Pepe spürte, dass die letzte Herausforderung näher rückte – aber was ihn erwartete, wusste er noch nicht...
+        Pepe, the adventurous Mexican, had lost his way in the hot desert. The sun was burning so strongly that he was slowly losing his mind. Suddenly he heard a mysterious voice: "Pepe, you have to save the world!" A shimmering door appeared in front of him and before he knew it, he was pulled inside. He found himself in a strange, two-dimensional world - chickens were jumping around everywhere. "What the hell?" he thought, confused. But the voice sounded again: "Jump on the chickens, Pepe!" He didn't hesitate for long and jumped. With a loud splash, the chickens flattened as if they were made of rubber. The further he got, the more chickens jumped towards him. Some were quick, others were slower, but Pepe flattened them all. His path led him to a large pond, where an ominous clucking sounded from the chicken coop. Pepe sensed that the final challenge was approaching - but he didn't yet know what to expect...
     </span>
 
 </div>
 
+<span class="span-impressum"><a href="impressum.html">Impressum</a></span>
 </body>
 </html>

@@ -20,6 +20,7 @@ body {
 
 canvas {
     background-color: black;
+    margin-top: 40px;
 }
 
 .d-none {
@@ -63,4 +64,20 @@ label {
     align-items: center;
     justify-content: space-around;
     width: 720px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.span-impressum {
+    font-size: 35px;
+    color: white;
+    margin-top: 40px;
 }
