@@ -91,3 +91,21 @@ a:hover {
 .mobileWarning {
     display: none;
 }
+
+.hud {
+    display: none;
+    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 3;
+    padding: 10px;
+}
+
+.hud button {
+    color: white;
+    background-color: #925f0d;
+    border: none;
+    padding: 17px;
+    border-radius: 50%;
+}

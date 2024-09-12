@@ -85,6 +85,25 @@ function init() {
     world = new World(canvas, keyboard);
 }
 
+function bindBitsPressEvent() {
+    function addTouchEventListener(buttonId, key) {
+        document.getElementById(buttonId).addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            keyboard[key] = true;
+        });
+
+        document.getElementById(buttonId).addEventListener('touchend', (e) => {
+            e.preventDefault();
+            keyboard[key] = false;
+        });
+    }
+
+    addTouchEventListener('btnLeft', 'LEFT');
+    addTouchEventListener('btnRight', 'RIGHT');
+    addTouchEventListener('btnJump', 'SPACE');
+    addTouchEventListener('btnThrow', 'D');
+}
+
 document.addEventListener('keydown', (e) => {
     if (e.keyCode == 39) {
         keyboard.RIGHT = true;
@@ -141,16 +160,19 @@ function closeHelpWindow() {
 
 function changeAudio() {
     let audioButton = document.getElementById('audioButton');
+    let audioButtonMobile = document.getElementById('audioButtonMobile');
     if (audio) {
         audio = false;
         backgroundMusic.loop = false;
         stopBackgroundMusic();
         audioButton.src = 'img/controll-icons/audio_off.svg';
+        audioButtonMobile.src = 'img/controll-icons/audio_off.svg';
     } else {
         audio = true;
         backgroundMusic.loop = true;
         startBackgroundMusic();
         audioButton.src = 'img/controll-icons/audio_on.svg';
+        audioButtonMobile.src = 'img/controll-icons/audio_on.svg';
     }
 }
 
