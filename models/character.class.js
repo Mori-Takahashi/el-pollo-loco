@@ -74,6 +74,7 @@ class Character extends movableObject{
     snoose_sound = new Audio('audio/snort.mp3');
     COIN_SOUND = new Audio('audio/coin.mp3');
     salsa_SOUND = new Audio('audio/bottle.mp3');
+    hurt_SOUND = new Audio('audio/hurt.mp3');
 
 
 
@@ -88,6 +89,7 @@ class Character extends movableObject{
         this.applyGravity();
         this.animate();
         this.jumpOneTime = false;
+        this.playHurtSound = true;
     }
 
     updateLastKeyPressTime() {
@@ -149,6 +151,7 @@ class Character extends movableObject{
                 this.deadLikeMario();
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
+                this.hurtSound();
             } else {
                     if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && !this.isAboveGround()) {
                         this.playAnimation(this.IMAGES_WALKING);
@@ -189,6 +192,16 @@ class Character extends movableObject{
             }, 1000);
 
             console.log('jumpOneTime', this.y);
+        }
+    }
+
+    hurtSound() {
+        if (this.playHurtSound) {
+            this.hurt_SOUND.play();
+            this.playHurtSound = false;
+            setTimeout(() => {
+                this.playHurtSound = true;
+            }, 1000);
         }
     }
 }
