@@ -23,7 +23,6 @@ class StatusbarBoss extends DrawableObjects{
         this.percentage = percentage;
         let path = this.IMAGES[this.resolveImageIndex()]
         this.img = this.imageCache[path];
-        console.log('IMG PERCENTAGE',percentage)
     }
 
     resolveImageIndex() {

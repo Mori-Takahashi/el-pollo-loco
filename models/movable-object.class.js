@@ -15,7 +15,6 @@ class movableObject extends  DrawableObjects{
      */
     energy = 100;
     CoinsInInventory = 0;
-    bottleInInventory = 0;
     energy_BOSS = 100;
 
     lastHit = 0;
@@ -76,11 +75,7 @@ class movableObject extends  DrawableObjects{
     }
 
     colectingSalsa() {
-        this.bottleInInventory += 1;
         if (audio) this.salsa_SOUND.play();
-        if (this.bottleInInventory <= 0) {
-            this.bottleInInventory = 0;
-        }
     }
 
     isHurt() {

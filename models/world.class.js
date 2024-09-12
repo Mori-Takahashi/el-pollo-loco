@@ -34,7 +34,6 @@ class World {
                 //console.log('Character x:', this.character.x, 'y:', this.character.y);
                 //console.log('Camera x:', this.camera_x);
                 //console.log('Character energy:', this.character.energy);
-                console.log('Character salsa movable:', this.character.bottleInInventory);
                 console.log('Character salsa world:', this.bottleInInventory);
                 //console.log('Character coins:', this.character.CoinsInInventory);
                 //console.log('Boss energy:', this.endboss.energy);
@@ -85,7 +84,7 @@ class World {
         this.level.salsa.forEach((salsa) => {
             if (this.character.isColliding(salsa)){
                 this.character.colectingSalsa();
-                this.salsaBar.setPercentage(this.character.bottleInInventory);
+                this.salsaBar.setPercentage(this.bottleInInventory);
                 this.character.checkIsCollecting();
             }
         });
@@ -240,7 +239,6 @@ class World {
 
     checkBottleBreak() {
         this.throwableObjects.forEach((bottle, index) => {
-            console.log(bottle.y);
             if (bottle.y > 300 || this.endboss.isColliding(bottle)) {
                 setTimeout(() => {
                     this.throwableObjects.splice(index, 1);
