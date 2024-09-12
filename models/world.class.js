@@ -34,8 +34,9 @@ class World {
                 //console.log('Character x:', this.character.x, 'y:', this.character.y);
                 //console.log('Camera x:', this.camera_x);
                 //console.log('Character energy:', this.character.energy);
-                console.log('Character salsa:', this.character.bottleInInventory);
-                console.log('Character coins:', this.character.CoinsInInventory);
+                console.log('Character salsa movable:', this.character.bottleInInventory);
+                console.log('Character salsa world:', this.bottleInInventory);
+                //console.log('Character coins:', this.character.CoinsInInventory);
                 //console.log('Boss energy:', this.endboss.energy);
                 //console.log('endscreen:', this.endscreen);
                 //console.log('audio on/off:', audio);
@@ -102,7 +103,7 @@ class World {
             if (this.character.isColliding(salsa)){
                 this.bottleInInventory++;
                 this.character.colectingSalsa();
-                this.salsaBar.setPercentage(this.character.bottleInInventory);
+                this.salsaBar.setPercentage(this.bottleInInventory);
                 this.character.checkIsCollecting();
             }
         });
