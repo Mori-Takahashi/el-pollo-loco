@@ -1,0 +1,60 @@
+@media (hover: none) {
+    /*General responsive*/
+    .help {
+        display: none;
+    }
+
+    .span-impressum {
+        display: none;
+    }
+    /*---------------------*/
+
+    /*for portrait format ↕️*/
+    @media screen and (orientation: portrait){
+        canvas {
+            display: none;
+        }
+        .mobileWarning {
+            display: flex;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            background-color: #925f0d;
+            text-align: center;
+            font-size: calc(20px + 1vw);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+        }
+    }
+
+    .mobileHelp {
+        fill: black;
+    }
+
+    /*------------------*/
+
+
+    /*for landscape format ↔️*/
+    @media screen and (orientation: landscape){
+        @media screen and (max-width: 720px){
+            canvas {
+                width: 100%;
+            }
+        }
+
+        @media screen and (min-height: 480px){
+            canvas {
+                height: 100vh;
+            }
+        }
+    }
+
+    /*------------------*/
+
+
+}

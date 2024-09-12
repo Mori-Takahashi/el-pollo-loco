@@ -13,14 +13,20 @@ body {
     flex-direction: column;
     align-items: center;
     background-image: url("img/web_background/DALL_E_mexican_BG.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: 'Mexicana-Regular', sans-serif;
     color: black;
     font-size: 60px;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
 }
 
 canvas {
     background-color: black;
-    margin-top: 40px;
+    display: block;
 }
 
 .d-none {
@@ -32,7 +38,7 @@ canvas {
 }
 
 .help-text {
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: 0;
     width: 100%;
@@ -80,4 +86,8 @@ a:hover {
     font-size: 35px;
     color: white;
     margin-top: 40px;
+}
+
+.mobileWarning {
+    display: none;
 }
