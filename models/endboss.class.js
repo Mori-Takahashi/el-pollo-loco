@@ -47,6 +47,7 @@ class Endboss extends movableObject{
 
     hurtAudio = new Audio('audio/big-chicken.mp3');
     isBossDead = false;
+    isBossHit = false;
 
 
     constructor() {
@@ -59,13 +60,26 @@ class Endboss extends movableObject{
         this.x = 2500;
         this.speed = 0.80;
         this.animate();
+        this.checkIsDead();
     }
 
-    isBossHit = false;
+    checkIsDead() {
+        setInterval(() => {
+                if (this.isBossDead()) {
+                    //clearInterval(this.currentInterval);
+                    //clearInterval(this.currentIntervalAnimation);
+                this.playAnimation(this.IMAGES_BOSS_DEAD);
+                this.isBossDead = true;
+                console.log('Boss dead');
+            }
+        },200)
+    }
 
     bossHurt() {
         this.isBossHit = true;
         if (audio) this.hurtAudio.play();
+        clearInterval(this.currentInterval);
+        clearInterval(this.currentIntervalAnimation);
         setInterval(() => {
             if (this.isBossHit) {
                 this.playAnimation(this.IMAGES_BOSS_HURT);
@@ -96,12 +110,6 @@ class Endboss extends movableObject{
                 firstAnimation = 0;
                 hadFirstContact = true;
             }
-            /*TODO fix death animation*/
-            if (this.isDead_BOSS()) {
-                this.playAnimation(this.IMAGES_BOSS_DEAD);
-                this.isBossDead = true;
-                //clearInterval(this.currentInterval);
-            }
 
         }, 200);
     }
@@ -121,15 +129,12 @@ class Endboss extends movableObject{
         clearInterval(this.currentIntervalAnimation);
         if (this.isBossHit === false) {
             if (randomAction === 1) {
-                /*move left*/
                 this.currentInterval = setInterval(() => this.startMovingLeft(), 1000 / 60);
                 this.currentIntervalAnimation = setInterval(() => this.animationWalk(), 200);
             } else if (randomAction === 2) {
-                /*move right*/
                 this.currentInterval = setInterval(() => this.startMovingRight(), 1000 / 60);
                 this.currentIntervalAnimation = setInterval(() => this.animationWalk(), 200);
             } else if (randomAction === 3) {
-                /*attack*/
                 this.startAttack();
                 this.currentInterval = setInterval(() => this.startAttack(), 1000 / 60);
                 this.currentIntervalAnimation = setInterval(() => this.animationAttack(), 200);

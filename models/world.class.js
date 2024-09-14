@@ -34,11 +34,12 @@ class World {
                 //console.log('Character x:', this.character.x, 'y:', this.character.y);
                 //console.log('Camera x:', this.camera_x);
                 //console.log('Character energy:', this.character.energy);
-                console.log('Character salsa world:', this.bottleInInventory);
+                //console.log('Character salsa world:', this.bottleInInventory);
                 //console.log('Character coins:', this.character.CoinsInInventory);
                 //console.log('Boss energy:', this.endboss.energy);
                 //console.log('endscreen:', this.endscreen);
                 //console.log('audio on/off:', audio);
+                console.log('endboss energy:', this.character.energy_BOSS);
             }, 1000);
         }
     }
