@@ -36,7 +36,7 @@ class Chicken extends movableObject {
         }, 1000 / 60)
 
         setInterval(() => {
-            if (this.isChickenDead === false) {
+            if (!this.isChickenDead) {
                 this.chickenWalkingAnimation();
             } else {
                 this.chickenDeadAnimation();
