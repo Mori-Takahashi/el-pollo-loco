@@ -81,14 +81,6 @@ class World {
             }
         });
 
-        this.level.salsa.forEach((salsa) => {
-            if (this.character.isColliding(salsa)){
-                this.character.colectingSalsa();
-                this.salsaBar.setPercentage(this.bottleInInventory);
-                this.character.checkIsCollecting();
-            }
-        });
-
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)){
                 this.CoinsInInventory += 10;
