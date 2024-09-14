@@ -9,9 +9,7 @@ backgroundMusic.loop = true;
 backgroundMusic.volume = 0.1;
 
 function startBackgroundMusic() {
-    setTimeout(() => {
         if (audio) backgroundMusic.play();
-    }, 2000)
 }
 
 function setVolume(volume) {
@@ -70,6 +68,7 @@ function onCanvasClick(event) {
     const y = event.clientY - rect.top;
     if (canvas.width / 2 - 75 <= x && x <= canvas.width / 2 + 75 && 50 <= y && y <= 100) {
         initStart();
+        startBackgroundMusic();
     }
 }
 
