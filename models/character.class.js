@@ -196,8 +196,8 @@ class Character extends movableObject{
     }
 
     hurtSound() {
-        if (this.playHurtSound) {
-            this.hurt_SOUND.play();
+        if (this.playHurtSound && !this.isAboveGround()) {
+            if (audio) this.hurt_SOUND.play();
             this.playHurtSound = false;
             setTimeout(() => {
                 this.playHurtSound = true;

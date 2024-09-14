@@ -39,7 +39,7 @@ class World {
                 //console.log('Boss energy:', this.endboss.energy);
                 //console.log('endscreen:', this.endscreen);
                 //console.log('audio on/off:', audio);
-                console.log('endboss energy:', this.character.energy_BOSS);
+                //console.log('endboss energy:', this.character.energy_BOSS);
             }, 1000);
         }
     }
