@@ -58,6 +58,19 @@
         }
     }
 
+    @media screen and (max-width: 844px){
+        canvas {
+            width: 85%;
+        }
+    }
+
+    @media screen and (min-height: 390px){
+        canvas {
+            height: 100vh;
+        }
+    }
+    
+
     /*------------------*/
 
 
