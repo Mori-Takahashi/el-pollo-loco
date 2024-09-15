@@ -106,13 +106,13 @@ class World {
                 this.bossBar.setPercentage(this.character.energy_BOSS);
                 this.endboss.bossHurt();
                 if (this.character.isDead_BOSS()) {
+                    this.endboss.isBossDead = true;
                     setTimeout(() => {
                         this.level.enemies.splice(8, 1);
                     }, 2000);
                 }
             }
         });
-
     }
 
 
