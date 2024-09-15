@@ -65,12 +65,12 @@ class Endboss extends movableObject{
 
     checkIsDead() {
         setInterval(() => {
-                if (this.isBossDead()) {
-                    //clearInterval(this.currentInterval);
-                    //clearInterval(this.currentIntervalAnimation);
+                if (this.isBossDead) {
                 this.playAnimation(this.IMAGES_BOSS_DEAD);
-                this.isBossDead = true;
-                console.log('Boss dead');
+                console.log('Boss is dead');
+                console.log('stop animation 1', this.currentInterval);
+                console.log('stop animation 2', this.currentIntervalAnimation);
+                console.log('play dead animation', this.IMAGES_BOSS_DEAD);
             }
         },200)
     }
@@ -81,7 +81,7 @@ class Endboss extends movableObject{
         clearInterval(this.currentInterval);
         clearInterval(this.currentIntervalAnimation);
         setInterval(() => {
-            if (this.isBossHit) {
+            if (this.isBossHit && !this.isBossDead) {
                 this.playAnimation(this.IMAGES_BOSS_HURT);
             }
         }, 400);
@@ -127,7 +127,7 @@ class Endboss extends movableObject{
         let randomAction = this.getRandomNumber();
         clearInterval(this.currentInterval);
         clearInterval(this.currentIntervalAnimation);
-        if (this.isBossHit === false) {
+        if (this.isBossHit === false && this.isBossDead === false) {
             if (randomAction === 1) {
                 this.currentInterval = setInterval(() => this.startMovingLeft(), 1000 / 60);
                 this.currentIntervalAnimation = setInterval(() => this.animationWalk(), 200);
