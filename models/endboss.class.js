@@ -58,7 +58,7 @@ class Endboss extends movableObject{
         this.loadImages(this.IMAGES_BOSS_HURT);
         this.loadImages(this.IMAGES_BOSS_DEAD);
         this.x = 2500;
-        this.speed = 0.80;
+        this.speed = 2;
         this.animate();
         this.checkIsDead();
     }
@@ -88,7 +88,7 @@ class Endboss extends movableObject{
 
         setTimeout(() => {
             this.isBossHit = false;
-        }, 2000);
+        }, 1000);
     }
 
 
