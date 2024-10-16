@@ -162,7 +162,7 @@ class World {
             this.flipImage(moveObject)
         }
         moveObject.draw(this.ctx);
-        moveObject.drawFrame(this.ctx);
+        /*moveObject.drawFrame(this.ctx);*/
 
 
         if (moveObject.otherDirection) {
