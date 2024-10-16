@@ -7,6 +7,7 @@ let audio = true;
 let backgroundMusic = new Audio('audio/bg_music.mp3');
 backgroundMusic.loop = true;
 backgroundMusic.volume = 0.1;
+let inDevelopment = true;
 
 function startBackgroundMusic() {
         if (audio) backgroundMusic.play();
@@ -24,6 +25,12 @@ function initStartScreen() {
     canvas = document.getElementById('canvasField');
     ctx = canvas.getContext('2d');
     drawStartScreen();
+}
+
+function checkDevelopment() {
+    if (inDevelopment) {
+        alert('Info: This game is still in development and may not work properly');
+    }
 }
 
 function checkBrowser() {
