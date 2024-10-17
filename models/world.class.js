@@ -54,10 +54,11 @@ class World {
             this.checkThrowObjects();
             this.checkCollisionJumpOnEnemy();
             this.checkBottleBreak();
+            console.log('überprüfe ob collison');
             if (this.character.isDead() || this.character.isDead_BOSS()) {
                 this.showEndGame();
             }
-        }, 200);
+        }, 100);
     }
 
     /**
@@ -76,7 +77,8 @@ class World {
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)){
+            if (this.character.isColliding(enemy) && !this.character.isHurt() && !enemy.isChickenDead) {
+                console.log('Character is colliding with enemy');
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
             }
@@ -228,7 +230,7 @@ class World {
     
                 setTimeout(() => {
                     this.level.enemies.splice(index, 1);
-                }, 1000);
+                }, 500);
             }
         });
     }
