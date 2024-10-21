@@ -31,7 +31,7 @@ class World {
         if (this.debug) {
             console.warn('Debug mode is on');
             setInterval(() => {
-                console.log('cooldown:', this.throwCooldown);
+                //console.log('cooldown:', this.throwCooldown);
                 //console.log('Character x:', this.character.x, 'y:', this.character.y);
                 //console.log('Camera x:', this.camera_x);
                 //console.log('Character energy:', this.character.energy);
@@ -240,13 +240,17 @@ checkThrowObjects() {
         });
     }
 
+
     checkBottleBreak() {
-        this.throwableObjects.forEach((bottle, index) => {
-            if (bottle.y > 300 || this.endboss.isColliding(bottle)) {
+        this.throwableObjects = this.throwableObjects.filter((bottle) => {
+            if (bottle.y > 500 || this.endboss.isColliding(bottle)) {
+                bottle.playSplashAnimation();
                 setTimeout(() => {
-                    this.throwableObjects.splice(index, 1);
+                    this.throwableObjects = this.throwableObjects.filter(b => b !== bottle);
                 }, 500);
+                return false;
             }
+            return true;
         });
     }
 }
