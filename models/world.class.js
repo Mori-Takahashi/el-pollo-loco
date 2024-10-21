@@ -31,6 +31,7 @@ class World {
         if (this.debug) {
             console.warn('Debug mode is on');
             setInterval(() => {
+                //console.log('cooldown:', this.throwCooldown);
                 //console.log('Character x:', this.character.x, 'y:', this.character.y);
                 //console.log('Camera x:', this.camera_x);
                 //console.log('Character energy:', this.character.energy);
@@ -54,29 +55,35 @@ class World {
             this.checkThrowObjects();
             this.checkCollisionJumpOnEnemy();
             this.checkBottleBreak();
+            console.log('überprüfe ob collison');
             if (this.character.isDead() || this.character.isDead_BOSS()) {
                 this.showEndGame();
             }
-        }, 200);
+        }, 100);
     }
 
     /**
      * retrieves the x and y axes from the character
      */
-    checkThrowObjects() {
-        if (this.keyboard.D) {
-            if (this.bottleInInventory > 0) {
-                this.bottleInInventory--;
-                let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
-                this.throwableObjects.push(bottle);
-                this.salsaBar.setPercentage(this.bottleInInventory);
-            }
+checkThrowObjects() {
+    if (this.keyboard.D) {
+        if (this.bottleInInventory > 0 && !this.throwCooldown) {
+            this.bottleInInventory--;
+            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+            this.throwableObjects.push(bottle);
+            this.salsaBar.setPercentage(this.bottleInInventory);
+            this.throwCooldown = true;
+            setTimeout(() => {
+                this.throwCooldown = false;
+            }, 1000);
         }
     }
+}
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)){
+            if (this.character.isColliding(enemy) && !this.character.isHurt() && !enemy.isChickenDead) {
+                console.log('Character is colliding with enemy');
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
             }
@@ -228,18 +235,22 @@ class World {
     
                 setTimeout(() => {
                     this.level.enemies.splice(index, 1);
-                }, 1000);
+                }, 500);
             }
         });
     }
 
+
     checkBottleBreak() {
-        this.throwableObjects.forEach((bottle, index) => {
-            if (bottle.y > 300 || this.endboss.isColliding(bottle)) {
+        this.throwableObjects = this.throwableObjects.filter((bottle) => {
+            if (bottle.y > 500 || this.endboss.isColliding(bottle)) {
+                bottle.playSplashAnimation();
                 setTimeout(() => {
-                    this.throwableObjects.splice(index, 1);
+                    this.throwableObjects = this.throwableObjects.filter(b => b !== bottle);
                 }, 500);
+                return false;
             }
+            return true;
         });
     }
 }
