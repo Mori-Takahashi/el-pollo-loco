@@ -113,3 +113,17 @@ a:hover {
 .mobile-impressum-link {
     margin-top: 5%;
 }
+
+.restart-btn {
+    border: 1px orange solid;
+    font-family: 'Mexicana-Regular', sans-serif;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    width: 200px;
+    text-align: center;
+    height: 55px;
+    padding: 5px;
+    font-size: 30px;
+    border-radius: 16px;
+}

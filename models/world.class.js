@@ -243,7 +243,7 @@ checkThrowObjects() {
 
     checkBottleBreak() {
         this.throwableObjects = this.throwableObjects.filter((bottle) => {
-            if (bottle.y > 500 || this.endboss.isColliding(bottle)) {
+            if (bottle.y > 500 || this.checkCollisions(this.endboss)) {
                 bottle.playSplashAnimation();
                 setTimeout(() => {
                     this.throwableObjects = this.throwableObjects.filter(b => b !== bottle);
@@ -254,3 +254,5 @@ checkThrowObjects() {
         });
     }
 }
+
+//this.endboss.isColliding(bottle)
