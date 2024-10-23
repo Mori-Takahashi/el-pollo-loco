@@ -34,18 +34,17 @@ class ThrowableObject extends movableObject {
         this.height = 60;
         this.width = 50;
         this.trow();
-        this.animate();
+        //this.animate();
     }
+
 
     animate() {
         setInterval(() => {
-            if (this.y > 300) {
-                this.playAnimation(this.BOTTLE_SMASH);
-            } else {
                 this.playAnimation(this.BOTTLE_ROTAION);
-            }
         }, 100);
     }
+
+
 
     /**
      * Throw bottle
