@@ -243,14 +243,13 @@ checkThrowObjects() {
 
     checkBottleBreak() {
         this.throwableObjects = this.throwableObjects.filter((bottle) => {
-            if (bottle.y > 300 || this.checkCollisions(this.endboss)) {
-                bottle.playSplashAnimation();
+            if (bottle.y > 400 || bottle.isColliding(this.endboss)) {
+                bottle.isSmashed = true;
                 setTimeout(() => {
                     this.throwableObjects = this.throwableObjects.filter(b => b !== bottle);
-                }, 1500);
+                }, 50);
                 return false;
             }
-            bottle.animate();
             return true;
         });
     }
