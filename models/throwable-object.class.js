@@ -46,11 +46,16 @@ class ThrowableObject extends movableObject {
     //300 200 100
     animate() {
         setInterval(() => {
-            if (this.y < 350 || this.isColliding(world.endboss)) {
+            if (this.y < 350) {
                 this.playAnimation(this.BOTTLE_ROTAION);
+            } else if (this.isColliding(world.endboss)) {
+                this.playAnimation(this.BOTTLE_SMASH);
+                if (!this.audio_was_played) {
+                    if (audio) this.brakeAudio.play();
+                    this.audio_was_played = true;
+                }
             } else {
                 this.playAnimation(this.BOTTLE_SMASH);
-                console.log('bottle smashed animation');
                 if (!this.audio_was_played) {
                     if (audio) this.brakeAudio.play();
                     this.audio_was_played = true;

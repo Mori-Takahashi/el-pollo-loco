@@ -244,7 +244,6 @@ checkThrowObjects() {
         this.throwableObjects = this.throwableObjects.filter((bottle) => {
             if (bottle.y > 350 || bottle.isColliding(this.endboss)) {
                 bottle.isSmashed = true;
-                console.log('Bottle is smashed in word');
                 setTimeout(() => {
                     this.throwableObjects = this.throwableObjects.filter(b => b !== bottle);
                 }, 500);
@@ -254,5 +253,3 @@ checkThrowObjects() {
         });
     }
 }
-
-//this.endboss.isColliding(bottle)
