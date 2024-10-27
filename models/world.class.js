@@ -55,7 +55,6 @@ class World {
             this.checkThrowObjects();
             this.checkCollisionJumpOnEnemy();
             this.checkBottleBreak();
-            console.log('überprüfe ob collison');
             if (this.character.isDead() || this.character.isDead_BOSS()) {
                 this.showEndGame();
             }
@@ -243,8 +242,8 @@ checkThrowObjects() {
 
     checkBottleBreak() {
         this.throwableObjects = this.throwableObjects.filter((bottle) => {
-            if (bottle.y > 500 || this.checkCollisions(this.endboss)) {
-                bottle.playSplashAnimation();
+            if (bottle.y > 350 || bottle.isColliding(this.endboss)) {
+                bottle.isSmashed = true;
                 setTimeout(() => {
                     this.throwableObjects = this.throwableObjects.filter(b => b !== bottle);
                 }, 500);
@@ -254,5 +253,3 @@ checkThrowObjects() {
         });
     }
 }
-
-//this.endboss.isColliding(bottle)
