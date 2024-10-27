@@ -43,12 +43,12 @@ class ThrowableObject extends movableObject {
     audio_was_played = false;
     isSmashed = false;
 
+    //300 200 100
     animate() {
         setInterval(() => {
-            if (this.y < 300 || this.isColliding(world.endboss)) {
+            if (this.y < 350 || this.isColliding(world.endboss)) {
                 this.playAnimation(this.BOTTLE_ROTAION);
-            }
-            if (this.isSmashed) {
+            } else {
                 this.playAnimation(this.BOTTLE_SMASH);
                 console.log('bottle smashed animation');
                 if (!this.audio_was_played) {
@@ -58,8 +58,6 @@ class ThrowableObject extends movableObject {
             }
         }, 95);
     }
-
-/*this.y >= 300 || this.isColliding(world.endboss)*/
 
     /**
      * Throw bottle
