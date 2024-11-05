@@ -250,7 +250,7 @@ checkThrowObjects() {
 
     checkBottleBreak() {
         this.throwableObjects = this.throwableObjects.filter((bottle) => {
-            if (bottle.y > 350 || bottle.isColliding(this.endboss)) {
+            if (bottle.y > 350) {
                 bottle.isSmashed = true;
                 setTimeout(() => {
                     this.throwableObjects = this.throwableObjects.filter(b => b !== bottle);
