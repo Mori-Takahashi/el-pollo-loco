@@ -256,8 +256,41 @@ checkThrowObjects() {
                     this.throwableObjects = this.throwableObjects.filter(b => b !== bottle);
                 }, 500);
                 return false;
+            } else if (this.endboss.isColliding(bottle)) {
+                this.character.reduceBossEnergy();
+                this.bossBar.setPercentage(this.character.energy_BOSS);
+                this.endboss.bossHurt();
+                this.bossHit = true;
+                this.resetBossHit();
+                setTimeout(() => {
+                    this.throwableObjects = this.throwableObjects.filter(b => b !== bottle);
+                }, 500);
+                if (this.character.isDead_BOSS()) {
+                    this.endboss.isBossDead = true;
+                    setTimeout(() => {
+                        this.level.enemies.splice(8, 1);
+                    }, 2000);
+                }
+                return false;
             }
             return true;
         });
     }
 }
+
+/*
+this.throwableObjects.forEach((bottle) => {
+    if (this.endboss.isColliding(bottle)) {
+        this.character.reduceBossEnergy();
+        this.bossBar.setPercentage(this.character.energy_BOSS);
+        this.endboss.bossHurt();
+        this.bossHit = true;
+        this.resetBossHit();
+        if (this.character.isDead_BOSS()) {
+            this.endboss.isBossDead = true;
+            setTimeout(() => {
+                this.level.enemies.splice(8, 1);
+            }, 2000);
+        }
+    }
+});*/
