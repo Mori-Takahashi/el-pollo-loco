@@ -128,11 +128,8 @@ class Endboss extends movableObject{
         clearInterval(this.currentInterval);
         clearInterval(this.currentIntervalAnimation);
         if (this.isBossHit === false && this.isBossDead === false) {
-            if (randomAction === 1) {
+            if (randomAction === 1 || randomAction === 2) {
                 this.currentInterval = setInterval(() => this.startMovingLeft(), 1000 / 60);
-                this.currentIntervalAnimation = setInterval(() => this.animationWalk(), 200);
-            } else if (randomAction === 2) {
-                this.currentInterval = setInterval(() => this.startMovingRight(), 1000 / 60);
                 this.currentIntervalAnimation = setInterval(() => this.animationWalk(), 200);
             } else if (randomAction === 3) {
                 this.startAttack();
