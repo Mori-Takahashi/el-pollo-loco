@@ -111,6 +111,8 @@ checkThrowObjects() {
                 this.character.reduceBossEnergy();
                 this.bossBar.setPercentage(this.character.energy_BOSS);
                 this.endboss.bossHurt();
+                this.bossHit = true;
+                this.resetBossHit();
                 if (this.character.isDead_BOSS()) {
                     this.endboss.isBossDead = true;
                     setTimeout(() => {
@@ -121,6 +123,12 @@ checkThrowObjects() {
         });
     }
 
+    resetBossHit() {
+        setTimeout(() => {
+            this.bossHit = false;
+        }, 2000);
+    }
+    bossHit = false;
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

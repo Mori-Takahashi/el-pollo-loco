@@ -48,7 +48,7 @@ class ThrowableObject extends movableObject {
         setInterval(() => {
             if (this.y < 350) {
                 this.playAnimation(this.BOTTLE_ROTAION);
-            } else if (this.isColliding(world.endboss)) {
+            } else if (this.checkBottleHit()) {
                 this.playAnimation(this.BOTTLE_SMASH);
                 if (!this.audio_was_played) {
                     if (audio) this.brakeAudio.play();
@@ -62,6 +62,10 @@ class ThrowableObject extends movableObject {
                 }
             }
         }, 95);
+    }
+
+    checkBottleHit() {
+        return world.bossHit
     }
 
     /**
