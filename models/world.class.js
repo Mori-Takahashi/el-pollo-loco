@@ -34,7 +34,7 @@ class World {
                 //console.log('cooldown:', this.throwCooldown);
                 //console.log('Character x:', this.character.x, 'y:', this.character.y);
                 //console.log('Camera x:', this.camera_x);
-                //console.log('Character energy:', this.character.energy);
+                console.log('Character energy:', this.character.energy);
                 //console.log('Character salsa world:', this.bottleInInventory);
                 //console.log('Character coins:', this.character.CoinsInInventory);
                 //console.log('Boss energy:', this.endboss.energy);
@@ -233,16 +233,18 @@ checkThrowObjects() {
         let enemyHit = false;
         this.level.enemies.forEach((enemy, index) => {
             if (!enemyHit && this.character.isColliding(enemy) && this.character.isAboveGround() && !enemy.isChickenDead) {
+                if (this.character.energy === 0) {
 
-                enemy.isChickenDead = true; 
-                enemyHit = true;
-    
-                this.character.jump();
-                this.character.energy += 5;
-    
-                setTimeout(() => {
-                    this.level.enemies.splice(index, 1);
-                }, 500);
+                    enemy.isChickenDead = true;
+                    enemyHit = true;
+
+                    this.character.jump();
+                    this.character.energy += 5;
+
+                    setTimeout(() => {
+                        this.level.enemies.splice(index, 1);
+                    }, 500);
+                }
             }
         });
     }
@@ -277,20 +279,3 @@ checkThrowObjects() {
         });
     }
 }
-
-/*
-this.throwableObjects.forEach((bottle) => {
-    if (this.endboss.isColliding(bottle)) {
-        this.character.reduceBossEnergy();
-        this.bossBar.setPercentage(this.character.energy_BOSS);
-        this.endboss.bossHurt();
-        this.bossHit = true;
-        this.resetBossHit();
-        if (this.character.isDead_BOSS()) {
-            this.endboss.isBossDead = true;
-            setTimeout(() => {
-                this.level.enemies.splice(8, 1);
-            }, 2000);
-        }
-    }
-});*/
