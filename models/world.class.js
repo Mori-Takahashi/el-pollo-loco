@@ -34,7 +34,7 @@ class World {
                 //console.log('cooldown:', this.throwCooldown);
                 //console.log('Character x:', this.character.x, 'y:', this.character.y);
                 //console.log('Camera x:', this.camera_x);
-                console.log('Character energy:', this.character.energy);
+                //console.log('Character energy:', this.character.energy);
                 //console.log('Character salsa world:', this.bottleInInventory);
                 //console.log('Character coins:', this.character.CoinsInInventory);
                 //console.log('Boss energy:', this.endboss.energy);
@@ -176,7 +176,6 @@ checkThrowObjects() {
             this.flipImage(moveObject)
         }
         moveObject.draw(this.ctx);
-        /*moveObject.drawFrame(this.ctx);*/
 
 
         if (moveObject.otherDirection) {
