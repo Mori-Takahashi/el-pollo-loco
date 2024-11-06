@@ -231,7 +231,7 @@ checkThrowObjects() {
     checkCollisionJumpOnEnemy() {
         let enemyHit = false;
         this.level.enemies.forEach((enemy, index) => {
-            if (!enemyHit && this.character.isColliding(enemy) && this.character.isAboveGround() && !enemy.isChickenDead) {
+            if (!enemyHit && this.character.isColliding(enemy) && this.character.isAboveGround() && !enemy.isChickenDead && this.character.speedY < 15) {
                 if (this.character.energy > 0) {
                     enemy.isChickenDead = true;
                     enemyHit = true;
