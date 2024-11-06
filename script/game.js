@@ -15,6 +15,7 @@ function startBackgroundMusic() {
 
 function setVolume(volume) {
     backgroundMusic.volume = volume;
+    localStorage.setItem('volume', volume);
 }
 
 function stopBackgroundMusic() {
@@ -179,6 +180,35 @@ function changeAudio() {
         startBackgroundMusic();
         audioButton.src = 'img/controll-icons/audio_on.svg';
         audioButtonMobile.src = 'img/controll-icons/audio_on.svg';
+    }
+    localStorage.setItem('audio', audio);
+}
+
+
+function loadAudioSettings() {
+    const savedAudioSetting = localStorage.getItem('audio');
+    const savedVolume = localStorage.getItem('volume');
+
+    if (savedAudioSetting !== null) {
+        audio = savedAudioSetting === 'true';
+        let audioButton = document.getElementById('audioButton');
+        let audioButtonMobile = document.getElementById('audioButtonMobile');
+        if (audio) {
+            backgroundMusic.loop = true;
+            startBackgroundMusic();
+            audioButton.src = 'img/controll-icons/audio_on.svg';
+            audioButtonMobile.src = 'img/controll-icons/audio_on.svg';
+        } else {
+            backgroundMusic.loop = false;
+            stopBackgroundMusic();
+            audioButton.src = 'img/controll-icons/audio_off.svg';
+            audioButtonMobile.src = 'img/controll-icons/audio_off.svg';
+        }
+    }
+
+    if (savedVolume !== null) {
+        backgroundMusic.volume = parseFloat(savedVolume);
+        document.getElementById('volumeSlider').value = savedVolume;
     }
 }
 
