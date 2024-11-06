@@ -81,7 +81,7 @@ checkThrowObjects() {
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy) && !this.character.isHurt() && !enemy.isChickenDead) {
+            if (this.character.isColliding(enemy) && !this.character.isHurt() && !enemy.isChickenDead && !this.character.isAboveGround()) {
                 console.log('Character is colliding with enemy');
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
@@ -233,13 +233,9 @@ checkThrowObjects() {
         this.level.enemies.forEach((enemy, index) => {
             if (!enemyHit && this.character.isColliding(enemy) && this.character.isAboveGround() && !enemy.isChickenDead) {
                 if (this.character.energy > 0) {
-
                     enemy.isChickenDead = true;
                     enemyHit = true;
-
                     this.character.jump();
-                    this.character.energy += 5;
-
                     setTimeout(() => {
                         this.level.enemies.splice(index, 1);
                     }, 500);
