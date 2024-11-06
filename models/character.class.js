@@ -171,7 +171,7 @@ class Character extends movableObject{
             }
             if (Date.now() - this.lastKeyPressTime > 15000) {
                 this.playAnimation(this.IMAGES_long_idle);
-                this.snoose_sound.play();
+                if (audio) this.snoose_sound.play();
             }
         }, 200);
     }
