@@ -233,7 +233,7 @@ checkThrowObjects() {
         let enemyHit = false;
         this.level.enemies.forEach((enemy, index) => {
             if (!enemyHit && this.character.isColliding(enemy) && this.character.isAboveGround() && !enemy.isChickenDead) {
-                if (this.character.energy === 0) {
+                if (this.character.energy > 0) {
 
                     enemy.isChickenDead = true;
                     enemyHit = true;
