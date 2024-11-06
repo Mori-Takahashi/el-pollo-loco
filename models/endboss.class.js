@@ -88,7 +88,8 @@ class Endboss extends movableObject{
 
         setTimeout(() => {
             this.isBossHit = false;
-        }, 1000);
+            this.startAttackInterval();
+        }, 3000);
     }
 
 
