@@ -84,7 +84,7 @@ class Endboss extends movableObject{
             if (this.isBossHit && !this.isBossDead) {
                 this.playAnimation(this.IMAGES_BOSS_HURT);
             }
-        }, 400);
+        }, 350); // 400
 
         setTimeout(() => {
             this.isBossHit = false;
@@ -154,10 +154,6 @@ class Endboss extends movableObject{
 
     startAttack() {
         this.jump();
-    }
-
-    startMovingRight() {
-        this.moveRight();
     }
 
     animationWalk() {

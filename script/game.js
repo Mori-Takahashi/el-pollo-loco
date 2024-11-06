@@ -7,7 +7,7 @@ let audio = true;
 let backgroundMusic = new Audio('audio/bg_music.mp3');
 backgroundMusic.loop = true;
 backgroundMusic.volume = 0.1;
-let inDevelopment = true;
+let inDevelopment = false;
 
 function startBackgroundMusic() {
         if (audio) backgroundMusic.play();
