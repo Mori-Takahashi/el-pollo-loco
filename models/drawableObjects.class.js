@@ -1,30 +1,35 @@
+/**
+ * Class representing drawable objects.
+ */
 class DrawableObjects {
     x = 120;
     y = 280;
-    height= 150;
-    width= 100;
+    height = 150;
+    width = 100;
     img;
     imageCache = {};
     currentImage = 0;
 
-
     /**
-     * Load images
-     * @param path - path of the image
+     * Load an image from a given path.
+     * @param {string} path - The path of the image to load.
      */
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
     }
 
+    /**
+     * Draw the image on the canvas context.
+     * @param {CanvasRenderingContext2D} ctx - The canvas rendering context.
+     */
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
-
     /**
-     * creates the "hit box"
-     * @param ctx - context
+     * Draw a frame (hit box) around the object if it is an instance of Character or Chicken.
+     * @param {CanvasRenderingContext2D} ctx - The canvas rendering context.
      */
     drawFrame(ctx) {
         if (this instanceof Character || this instanceof Chicken) {
@@ -37,10 +42,10 @@ class DrawableObjects {
     }
 
     /**
-     *
-     * @param {Array} arr - Array where img will be loaded ['img/img1.png', img/img2.png, ...]
+     * Load multiple images and cache them.
+     * @param {Array<string>} arr - Array of image paths to load.
      */
-    loadImages(arr){
+    loadImages(arr) {
         arr.forEach((path) => {
             let img = new Image();
             img.src = path;

@@ -15,12 +15,6 @@ class Chicken extends movableObject {
     DEAD_AUDIO = new Audio('audio/chicken_sound.mp3');
 
 
-    /**
-     * Is chicken dead
-     * @type {boolean} - true or false (True if chicken is dead)
-     */
-
-
     constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
@@ -52,6 +46,10 @@ class Chicken extends movableObject {
 
 
 
+    /**
+     * Handles the animation and sound for when the chicken is dead.
+     * Loads the dead image and plays the dead sound if it hasn't been played yet.
+     */
     chickenDeadAnimation() {
         this.loadImage(this.DEAD_IMAGE);
         if (!this.audio_was_played) {
@@ -60,9 +58,10 @@ class Chicken extends movableObject {
         }
     }
 
-
-
-
+    /**
+     * Handles the walking animation for the chicken.
+     * Plays the walking animation using the images defined in IMAGES_WALKING.
+     */
     chickenWalkingAnimation() {
         this.playAnimation(this.IMAGES_WALKING);
     }

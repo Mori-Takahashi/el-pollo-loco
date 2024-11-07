@@ -77,7 +77,10 @@ class Character extends movableObject{
     hurt_SOUND = new Audio('audio/hurt.mp3');
 
 
-
+    /**
+     * Constructs a new Character instance.
+     * Loads images, applies gravity, and starts animation.
+     */
     constructor() {
         super().loadImage('img/2_character_pepe/2_walk/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
@@ -92,10 +95,20 @@ class Character extends movableObject{
         this.playHurtSound = true;
     }
 
+    /**
+     * Updates the timestamp of the last key press to the current time.
+     */
     updateLastKeyPressTime() {
         this.lastKeyPressTime = new Date().getTime();
     }
 
+    /**
+     * Checks if the character is collecting an item (coin or salsa).
+     * If a coin or salsa is found, sets the collecting flag to true and returns the item.
+     * Otherwise, sets the collecting flag to false and returns null.
+     *
+     * @returns {Object|null} The collected item (coin or salsa) or null if no item is collected.
+     */
     isCollecting() {
         const coin = this.world.level.coins.find(coin => this.isColliding(coin));
         if (coin) {
@@ -111,11 +124,20 @@ class Character extends movableObject{
         return null;
     }
 
+    /**
+     * Removes the specified object from the canvas and sets the collecting flag to false.
+     *
+     * @param {Object} object - The object to be removed from the canvas.
+     */
     removeObject(object) {
         this.world.removeObjectFromCanvas(object);
         this.collecting = false;
     }
 
+    /**
+     * Animates the character by setting up various intervals for different actions.
+     * Handles movement, jumping, and playing animations based on the character's state.
+     */
     animate() {
         setInterval(() => {
 
@@ -176,6 +198,10 @@ class Character extends movableObject{
         }, 200);
     }
 
+    /**
+     * Checks if the character is collecting an item (coin or salsa).
+     * If an item is collected, it removes the object from the canvas.
+     */
     checkIsCollecting() {
         const collectedObject = this.isCollecting();
         if (collectedObject) {
@@ -183,6 +209,11 @@ class Character extends movableObject{
         }
     }
 
+    /**
+     * Makes the character jump once when dead, similar to Mario.
+     * Sets the `jumpOneTime` flag to true to ensure the jump happens only once.
+     * After a delay, sets the character's y-coordinate to 400.
+     */
     deadLikeMario() {
         if (!this.jumpOneTime) {
             this.jumpOneTime = true;
@@ -195,6 +226,10 @@ class Character extends movableObject{
         }
     }
 
+    /**
+     * Plays the hurt sound if the character is hurt and not above ground.
+     * Ensures the sound is played only once within a specified interval.
+     */
     hurtSound() {
         if (this.playHurtSound && !this.isAboveGround()) {
             if (audio) this.hurt_SOUND.play();

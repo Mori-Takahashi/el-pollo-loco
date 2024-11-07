@@ -116,8 +116,6 @@ class movableObject extends  DrawableObjects{
 
     reduceBossEnergy() {
         this.energy_BOSS -= 10;
-        /*this.setPercentage(this.energy_BOSS);*/
-        /*StatusbarBoss.setPercentage*/
         if (this.energy_BOSS < 0) {
             this.energy_BOSS = 0;
         }

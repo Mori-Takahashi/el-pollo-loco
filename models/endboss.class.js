@@ -1,4 +1,8 @@
-class Endboss extends movableObject{
+/**
+ * Class representing the Endboss character.
+ * @extends movableObject
+ */
+class Endboss extends movableObject {
 
     height = 400;
     width = 250;
@@ -49,7 +53,9 @@ class Endboss extends movableObject{
     isBossDead = false;
     isBossHit = false;
 
-
+    /**
+     * Create an Endboss.
+     */
     constructor() {
         super().loadImage(this.IMAGES_BOSS_ALERT[0]);
         this.loadImages(this.IMAGES_BOSS_ALERT);
@@ -63,18 +69,24 @@ class Endboss extends movableObject{
         this.checkIsDead();
     }
 
+    /**
+     * Check if the boss is dead and play dead animation.
+     */
     checkIsDead() {
         setInterval(() => {
-                if (this.isBossDead) {
+            if (this.isBossDead) {
                 this.playAnimation(this.IMAGES_BOSS_DEAD);
                 console.log('Boss is dead');
                 console.log('stop animation 1', this.currentInterval);
                 console.log('stop animation 2', this.currentIntervalAnimation);
                 console.log('play dead animation', this.IMAGES_BOSS_DEAD);
             }
-        },200)
+        }, 200);
     }
 
+    /**
+     * Handle the boss being hurt.
+     */
     bossHurt() {
         this.isBossHit = true;
         if (audio) this.hurtAudio.play();
@@ -84,7 +96,7 @@ class Endboss extends movableObject{
             if (this.isBossHit && !this.isBossDead) {
                 this.playAnimation(this.IMAGES_BOSS_HURT);
             }
-        }, 350); // 400
+        }, 350);
 
         setTimeout(() => {
             this.isBossHit = false;
@@ -92,7 +104,9 @@ class Endboss extends movableObject{
         }, 3000);
     }
 
-
+    /**
+     * Animate the boss.
+     */
     animate() {
         let firstAnimation = 0;
         let hadFirstContact = false;
@@ -115,6 +129,10 @@ class Endboss extends movableObject{
         }, 200);
     }
 
+    /**
+     * Start moving the boss if it had first contact.
+     * @param {boolean} hadFirstContact - Indicates if the boss had first contact.
+     */
     startMoving(hadFirstContact) {
         if (hadFirstContact === true && !this.startAttackIntervalStarted) {
             this.startAttackIntervalStarted = true;
@@ -124,6 +142,9 @@ class Endboss extends movableObject{
         }
     }
 
+    /**
+     * Start the attack interval.
+     */
     startAttackInterval() {
         let randomAction = this.getRandomNumber();
         clearInterval(this.currentInterval);
@@ -145,25 +166,39 @@ class Endboss extends movableObject{
         }
     }
 
+    /**
+     * Get a random number between 1 and 3.
+     * @returns {number} A random number between 1 and 3.
+     */
     getRandomNumber() {
         return Math.floor(Math.random() * 3) + 1;
     }
 
+    /**
+     * Start moving the boss to the left.
+     */
     startMovingLeft() {
         this.moveLeft();
     }
 
+    /**
+     * Start the boss attack.
+     */
     startAttack() {
         this.jump();
     }
 
+    /**
+     * Play the walking animation.
+     */
     animationWalk() {
         this.playAnimation(this.IMAGES_BOSS_WALK);
     }
 
+    /**
+     * Play the attack animation.
+     */
     animationAttack() {
         this.playAnimation(this.IMAGES_BOSS_ATTACK);
     }
-
-
 }

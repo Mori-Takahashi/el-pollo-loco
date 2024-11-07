@@ -1,4 +1,12 @@
-class StatusbarBoss extends DrawableObjects{
+/**
+ * Class representing the status bar for the boss character.
+ * Extends the DrawableObjects class.
+ */
+class StatusbarBoss extends DrawableObjects {
+    /**
+     * Array of image paths representing different status bar states.
+     * @type {string[]}
+     */
     IMAGES = [
         "img/7_statusbars/2_statusbar_endboss/blue/blue0.png",
         "img/7_statusbars/2_statusbar_endboss/blue/blue20.png",
@@ -7,8 +15,15 @@ class StatusbarBoss extends DrawableObjects{
         "img/7_statusbars/2_statusbar_endboss/blue/blue100.png",
     ];
 
+    /**
+     * The current percentage of the status bar.
+     * @type {number}
+     */
     percentage = 100;
 
+    /**
+     * Creates an instance of StatusbarBoss.
+     */
     constructor() {
         super();
         this.loadImages(this.IMAGES);
@@ -19,12 +34,20 @@ class StatusbarBoss extends DrawableObjects{
         this.setPercentage(100);
     }
 
+    /**
+     * Sets the percentage of the status bar and updates the image accordingly.
+     * @param {number} percentage - The new percentage to set.
+     */
     setPercentage(percentage) {
         this.percentage = percentage;
-        let path = this.IMAGES[this.resolveImageIndex()]
+        let path = this.IMAGES[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
+    /**
+     * Resolves the index of the image to use based on the current percentage.
+     * @returns {number} The index of the image in the IMAGES array.
+     */
     resolveImageIndex() {
         if (this.percentage === 100) {
             return 4;
