@@ -26,10 +26,6 @@ This is a mini game project currently under development. The game is built using
 4. Click the "Restart Game" button to restart the game at any time.
 5. Use the audio button to toggle background music.
 
-## 🚩 Development Status
-
-This game is currently under development. New features and improvements are being added regularly. Stay tuned for updates!
-
 ## License
 
 This project is licensed under the MIT License.
